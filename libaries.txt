@@ -1,0 +1,2 @@
+* NativeWind : https://www.nativewind.dev/quick-starts/expo
+* React ReAnimated : https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/
