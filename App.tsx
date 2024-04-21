@@ -1,25 +1,15 @@
-import { StatusBar } from "expo-status-bar"
-import Animated, { BounceIn } from "react-native-reanimated"
-import { StyleSheet, Text, View } from "react-native"
+import { NavigationContainer } from "@react-navigation/native"
+import StackNavigator from "./src/navigation/StackNavigator"
+import { useFonts } from "expo-font"
 
 export default function App() {
+    const [fontsLoaded] = useFonts({
+        "Inter-Regular": require("./src/assets/fonts/Inter-Regular.ttf"),
+    })
+
     return (
-        <View style={styles.container}>
-            <Text className="text-red-700">Initial Commit</Text>
-            <Text className="text-blue-700">Integrated TailWind CSS</Text>
-            <Animated.Text entering={BounceIn} className="text-green-700">
-                Integrated React ReAnimated
-            </Animated.Text>
-            <StatusBar style="auto" />
-        </View>
+        <NavigationContainer>
+            {fontsLoaded ? <StackNavigator /> : null}
+        </NavigationContainer>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
-    },
-})
