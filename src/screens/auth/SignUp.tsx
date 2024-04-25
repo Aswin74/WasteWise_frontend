@@ -8,7 +8,13 @@ import Animated, {
     FadeOut,
 } from "react-native-reanimated"
 
-function Login() {
+// Navigation
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { RootStackParamList } from "../../navigation/StackNavigator"
+
+type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
+
+const SignUp = ({ navigation }: SignUpProps) => {
     return (
         <View className="w-full h-full bg-white">
             <StatusBar style="inverted" />
@@ -45,7 +51,7 @@ function Login() {
                 </Animated.View>
             </View>
 
-            {/* login form */}
+            {/* SignUp form */}
             <View className="h-full w-full flex pt-44">
                 {/* form */}
                 <View className="mx-4 space-y-4">
@@ -106,8 +112,10 @@ function Login() {
                         className="flex-row justify-center"
                     >
                         <Text>Already have an account? </Text>
-                        <TouchableOpacity>
-                            <Text className="text-sky-600">Login</Text>
+                        <TouchableOpacity
+                            onPress={() => navigation.push("Login")}
+                        >
+                            <Text className="text-sky-600">SignUp</Text>
                         </TouchableOpacity>
                     </Animated.View>
                 </View>
@@ -116,4 +124,4 @@ function Login() {
     )
 }
 
-export default Login
+export default SignUp
