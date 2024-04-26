@@ -115,7 +115,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
                         <TouchableOpacity
                             onPress={() => navigation.push("Login")}
                         >
-                            <Text className="text-sky-600">SignUp</Text>
+                            <Text className="text-sky-600">Login</Text>
                         </TouchableOpacity>
                     </Animated.View>
                 </View>
