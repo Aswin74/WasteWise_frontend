@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar"
-import React from "react"
+import React, { useState } from "react"
 import {
     View,
     Text,
@@ -9,6 +9,7 @@ import {
     KeyboardAvoidingView,
     Platform,
     ScrollView,
+    GestureResponderEvent,
 } from "react-native"
 import Animated, {
     FadeIn,
@@ -24,6 +25,16 @@ import { RootStackParamList } from "../../navigation/StackNavigator"
 type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
 
 const SignUp = ({ navigation }: SignUpProps) => {
+    
+    const [username,setUserName] = useState("")
+    const [email,setEmail]=useState("")
+    const [password, setPassword] = useState("")
+
+    const handleSubmit =(e:GestureResponderEvent)=>{
+        e.preventDefault()
+        console.log("username : ",username," email:",email,",password: ",password)
+    }
+
     return (
         <KeyboardAvoidingView
             behavior="padding"
@@ -81,6 +92,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
                             <TextInput
                                 placeholder="Username"
                                 placeholderTextColor={"gray"}
+                                onChangeText={setUserName}
                             />
                         </Animated.View>
 
@@ -93,6 +105,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
                             <TextInput
                                 placeholder="Email"
                                 placeholderTextColor={"gray"}
+                                onChangeText={setEmail}
                             />
                         </Animated.View>
 
@@ -105,6 +118,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
                             <TextInput
                                 placeholder="Password"
                                 placeholderTextColor={"gray"}
+                                onChangeText={setPassword}
                                 secureTextEntry
                             />
                         </Animated.View>
@@ -115,7 +129,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
                                 .springify()}
                             className="w-full"
                         >
-                            <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3">
+                            <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3" onPress={handleSubmit}>
                                 <Text className="text-white text-xl font-semibold text-center">
                                     SignUp
                                 </Text>
