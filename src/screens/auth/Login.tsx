@@ -9,6 +9,7 @@ import {
     KeyboardAvoidingView,
     Platform,
     ScrollView,
+    GestureResponderEvent,
 } from "react-native"
 import Animated, {
     FadeIn,
@@ -26,15 +27,22 @@ import { LoginInput } from "../../types"
 type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
 
 const Login = ({ navigation }: LoginProps) => {
-    const [inputValues, setInputValues] = useState<LoginInput>({
-        username: "",
-        password: "",
-    })
+    const [username,setUserName] = useState("")
+    const [password, setPassword] = useState("")
+    // const [inputValues, setInputValues] = useState<LoginInput>({
+    //     username: "",
+    //     password: "",
+    // })
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { id, value } = e.target
-        setInputValues((prevState) => ({ ...prevState, [id]: value }))
-        console.log(inputValues)
+    // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const { id, value } = e.target
+    //     setInputValues((prevState) => ({ ...prevState, [id]: value }))
+    //     console.log(inputValues)
+    // }
+
+    const handleSubmit =(e:GestureResponderEvent)=>{
+        e.preventDefault()
+        console.log("username : ",username,",password: ",password)
     }
 
     return (
@@ -96,7 +104,7 @@ const Login = ({ navigation }: LoginProps) => {
                                 // value={inputValues.username}
                                 placeholder="Username"
                                 placeholderTextColor={"gray"}
-                                // onChangeText={handleInputChange}
+                                onChangeText={setUserName}
                             />
                         </Animated.View>
 
@@ -109,6 +117,7 @@ const Login = ({ navigation }: LoginProps) => {
                             <TextInput
                                 placeholder="Password"
                                 placeholderTextColor={"gray"}
+                                onChangeText={setPassword}
                                 secureTextEntry
                             />
                         </Animated.View>
@@ -119,7 +128,7 @@ const Login = ({ navigation }: LoginProps) => {
                                 .springify()}
                             className="w-full"
                         >
-                            <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3">
+                            <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3" onPress={handleSubmit}>
                                 <Text className="text-white text-xl font-semibold text-center">
                                     Login
                                 </Text>
