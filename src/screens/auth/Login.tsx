@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
+import axios from "axios"
+
 import {
     View,
     Text,
@@ -27,8 +29,8 @@ import { LoginInput } from "../../types"
 type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
 
 const Login = ({ navigation }: LoginProps) => {
-    const [username,setUserName] = useState("")
-    const [password, setPassword] = useState("")
+    const [username, setUserName] = useState<string>("")
+    const [password, setPassword] = useState<any>("")
     // const [inputValues, setInputValues] = useState<LoginInput>({
     //     username: "",
     //     password: "",
@@ -40,9 +42,11 @@ const Login = ({ navigation }: LoginProps) => {
     //     console.log(inputValues)
     // }
 
-    const handleSubmit =(e:GestureResponderEvent)=>{
+    useEffect(() => {}, [])
+
+    const handleSubmit = (e: GestureResponderEvent) => {
         e.preventDefault()
-        console.log("username : ",username,",password: ",password)
+        console.log("username : ", username, ",password: ", password)
     }
 
     return (
@@ -128,7 +132,10 @@ const Login = ({ navigation }: LoginProps) => {
                                 .springify()}
                             className="w-full"
                         >
-                            <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3" onPress={handleSubmit}>
+                            <TouchableOpacity
+                                className="bg-sky-500 w-full rounded-2xl p-3"
+                                onPress={handleSubmit}
+                            >
                                 <Text className="text-white text-xl font-semibold text-center">
                                     Login
                                 </Text>

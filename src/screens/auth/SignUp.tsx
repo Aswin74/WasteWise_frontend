@@ -25,14 +25,20 @@ import { RootStackParamList } from "../../navigation/StackNavigator"
 type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
 
 const SignUp = ({ navigation }: SignUpProps) => {
-    
-    const [username,setUserName] = useState("")
-    const [email,setEmail]=useState("")
-    const [password, setPassword] = useState("")
+    const [username, setUserName] = useState<string>("")
+    const [email, setEmail] = useState<string>("")
+    const [password, setPassword] = useState<any>("")
 
-    const handleSubmit =(e:GestureResponderEvent)=>{
+    const handleSubmit = (e: GestureResponderEvent) => {
         e.preventDefault()
-        console.log("username : ",username," email:",email,",password: ",password)
+        console.log(
+            "username : ",
+            username,
+            " email:",
+            email,
+            ",password: ",
+            password
+        )
     }
 
     return (
@@ -129,7 +135,10 @@ const SignUp = ({ navigation }: SignUpProps) => {
                                 .springify()}
                             className="w-full"
                         >
-                            <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3" onPress={handleSubmit}>
+                            <TouchableOpacity
+                                className="bg-sky-500 w-full rounded-2xl p-3"
+                                onPress={handleSubmit}
+                            >
                                 <Text className="text-white text-xl font-semibold text-center">
                                     SignUp
                                 </Text>
