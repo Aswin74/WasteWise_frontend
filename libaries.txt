@@ -2,3 +2,5 @@
 * React ReAnimated : https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started/
 * Expo font : https://docs.expo.dev/develop/user-interface/fonts/
 * axios : npm install axios
+* Bottom Tab : https://reactnavigation.org/docs/tab-based-navigation
+* Map View : https://docs.expo.dev/versions/latest/sdk/map-view/ | https://github.com/react-native-maps/react-native-maps/blob/HEAD/docs/marker.md

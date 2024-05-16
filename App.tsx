@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native"
-import StackNavigator from "./src/navigation/StackNavigator"
 import { useFonts } from "expo-font"
+import Router from "./src/navigation/Router"
 
 export default function App() {
     const [fontsLoaded] = useFonts({
@@ -9,7 +9,7 @@ export default function App() {
 
     return (
         <NavigationContainer>
-            {fontsLoaded ? <StackNavigator /> : null}
+            {fontsLoaded ? <Router /> : null}
         </NavigationContainer>
     )
 }

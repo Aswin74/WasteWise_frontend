@@ -20,7 +20,7 @@ import Animated, {
 
 // Navigation
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { RootStackParamList } from "../../navigation/StackNavigator"
+import { RootStackParamList } from "../../navigation/Router"
 
 type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
 
