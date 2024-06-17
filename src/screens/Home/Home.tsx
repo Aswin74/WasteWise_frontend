@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native"
 import React, { useState, useEffect } from "react"
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps"
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps"
 import axios from "axios"
 
 interface MyModel {
@@ -24,43 +24,53 @@ const Home = () => {
         longitudeDelta: 0.0021,
     })
 
-    useEffect(() => {
-        fetchSampleData()
-    }, [])
+    // useEffect(() => {
+    //     fetchSampleData()
+    // }, [])
 
-    const fetchSampleData = async () => {
-        try {
-            const response = await axios.get(
-                "http://3.106.190.149:8000/getdata"
-            )
+    // const fetchSampleData = async () => {
+    //     try {
+    //         const response = await axios.get(
+    //             "http://3.106.190.149:8000/getdata"
+    //         )
 
-            if (response.data) {
-                const models: MyModel[] = response.data.map(
-                    (item: MyModel) => item.model
-                ) // Type MyModel
-                console.log("Models:", models)
-            } else {
-                console.log("No data received from endpoint.")
-            }
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                // Check if error is an AxiosError
-                console.error("Network Error:", error.message) // Access specific error message
-            } else {
-                console.error("Unexpected Error:", error)
-            }
-        }
-    }
+    //         if (response.data) {
+    //             const models: MyModel[] = response.data.map(
+    //                 (item: MyModel) => item.model
+    //             ) // Type MyModel
+    //             console.log("Models:", models)
+    //         } else {
+    //             console.log("No data received from endpoint.")
+    //         }
+    //     } catch (error) {
+    //         if (axios.isAxiosError(error)) {
+    //             // Check if error is an AxiosError
+    //             console.error("Network Error:", error.message) // Access specific error message
+    //         } else {
+    //             console.error("Unexpected Error:", error)
+    //         }
+    //     }
+    // }
 
     return (
         <View style={{ flex: 1 }}>
             <MapView
                 style={StyleSheet.absoluteFill}
                 provider={PROVIDER_GOOGLE}
+                mapType="standard"
                 initialRegion={loc}
-                showsUserLocation
-                showsMyLocationButton
-            />
+                showsUserLocation={true}
+                showsMyLocationButton={true}
+            >
+                <Marker
+                    coordinate={{
+                        latitude: 8.564585239157829,
+                        longitude: 76.88430643863097,
+                    }}
+                    title={"smaple"}
+                    pinColor="blue"
+                />
+            </MapView>
         </View>
     )
 }
