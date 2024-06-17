@@ -13,12 +13,7 @@ import {
   ScrollView,
   GestureResponderEvent,
 } from "react-native"
-import Animated, {
-  FadeIn,
-  FadeInDown,
-  FadeInUp,
-  FadeOut,
-} from "react-native-reanimated"
+import Animated, { FadeIn, FadeInDown, FadeInUp, FadeOut } from "react-native-reanimated"
 
 // Navigation
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
@@ -31,23 +26,19 @@ type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
 const Login = ({ navigation }: LoginProps) => {
   const [username, setUserName] = useState<string>("")
   const [password, setPassword] = useState<any>("")
-  // const [inputValues, setInputValues] = useState<LoginInput>({
-  //     username: "",
-  //     password: "",
-  // })
-
-  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     const { id, value } = e.target
-  //     setInputValues((prevState) => ({ ...prevState, [id]: value }))
-  //     console.log(inputValues)
-  // }
-
-  useEffect(() => {}, [])
+  const [inputValues, setInputValues] = useState<LoginInput>({
+    username: "",
+    password: "",
+  })
 
   const handleSubmit = (e: GestureResponderEvent) => {
     e.preventDefault()
-    console.log("username : ", username, ",password: ", password)
+    setInputValues({ username: username, password: password })
   }
+
+  useEffect(() => {
+    console.log(inputValues)
+  }, [inputValues])
 
   return (
     <KeyboardAvoidingView
@@ -58,10 +49,7 @@ const Login = ({ navigation }: LoginProps) => {
       <ScrollView>
         <StatusBar style="inverted" />
         {/* Background Image */}
-        <Image
-          className="h-full w-full absolute"
-          source={require("../../assets/wave.png")}
-        />
+        <Image className="h-full w-full absolute" source={require("../../assets/wave.png")} />
         {/* Logo and extra icons */}
         <View className="top-28 w-full items-center pb-6">
           <Animated.Image
@@ -85,9 +73,7 @@ const Login = ({ navigation }: LoginProps) => {
             entering={FadeInUp.delay(600).duration(1000).springify()}
             className="flex items-center mt-10 mb-5"
           >
-            <Text className="text-sky-500 font-bold text-3xl tracking-wider">
-              Login
-            </Text>
+            <Text className="text-sky-500 font-bold text-3xl tracking-wider">Login</Text>
           </Animated.View>
           <View className="mx-4 space-y-4">
             <Animated.View
@@ -96,7 +82,7 @@ const Login = ({ navigation }: LoginProps) => {
             >
               <TextInput
                 // id="username"
-                // value={inputValues.username}
+                value={username}
                 placeholder="Username"
                 placeholderTextColor={"gray"}
                 onChangeText={setUserName}
@@ -108,6 +94,7 @@ const Login = ({ navigation }: LoginProps) => {
               className="bg-black/5 rounded-2xl p-4 mb-2"
             >
               <TextInput
+                value={password}
                 placeholder="Password"
                 placeholderTextColor={"gray"}
                 onChangeText={setPassword}
@@ -115,17 +102,9 @@ const Login = ({ navigation }: LoginProps) => {
               />
             </Animated.View>
 
-            <Animated.View
-              entering={FadeInDown.delay(400).duration(1000).springify()}
-              className="w-full"
-            >
-              <TouchableOpacity
-                className="bg-sky-500 w-full rounded-2xl p-3"
-                onPress={handleSubmit}
-              >
-                <Text className="text-white text-xl font-semibold text-center">
-                  Login
-                </Text>
+            <Animated.View entering={FadeInDown.delay(400).duration(1000).springify()} className="w-full">
+              <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3" onPress={handleSubmit}>
+                <Text className="text-white text-xl font-semibold text-center">Login</Text>
               </TouchableOpacity>
             </Animated.View>
 
