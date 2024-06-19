@@ -4,3 +4,4 @@
 * axios : npm install axios
 * Bottom Tab : https://reactnavigation.org/docs/tab-based-navigation
 * Map View : https://docs.expo.dev/versions/latest/sdk/map-view/ | https://github.com/react-native-maps/react-native-maps/blob/HEAD/docs/marker.md
+* WebView : npm install react-native-webview

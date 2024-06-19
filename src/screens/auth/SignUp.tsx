@@ -52,7 +52,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
     <KeyboardAvoidingView
       behavior="padding"
       keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 10}
-      className="w-full h-full bg-white"
+      className="w-full h-full bg-ww-white"
     >
       <StatusBar style="inverted" />
       <ScrollView>
@@ -68,7 +68,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
           <Animated.Text
             entering={FadeInUp.delay(400).duration(1000).springify()}
             style={{ fontFamily: "Inter-Regular" }}
-            className="p-2 mt-3 font-bold text-white text-4xl tracking-wider"
+            className="p-2 mt-3 font-bold text-ww-white text-4xl tracking-wider"
           >
             WasteWise
           </Animated.Text>
@@ -78,14 +78,14 @@ const SignUp = ({ navigation }: SignUpProps) => {
         <View className="h-full w-full flex pt-40">
           {/* form */}
           <Animated.View entering={FadeInUp.delay(600).duration(1000).springify()} className="flex items-center mb-5">
-            <Text className="text-sky-500 font-bold text-3xl tracking-wider">SignUp</Text>
+            <Text className="text-ww-logo font-bold text-3xl tracking-wider">SignUp</Text>
           </Animated.View>
 
           {/* SignUp Form */}
           <View className="mx-4 space-y-4">
             <Animated.View
               entering={FadeInDown.delay(200).duration(1000).springify()}
-              className="bg-black/5 rounded-2xl p-4"
+              className="bg-ww-black/5 rounded-2xl p-4"
             >
               <TextInput placeholder="Username" placeholderTextColor={"gray"} onChangeText={setUserName} />
             </Animated.View>
@@ -99,7 +99,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
 
             <Animated.View
               entering={FadeInDown.delay(400).duration(1000).springify()}
-              className="bg-black/5 rounded-2xl p-4 mb-2"
+              className="bg-ww-black/5 rounded-2xl p-4 mb-2"
             >
               <TextInput
                 placeholder="Password"
@@ -110,8 +110,8 @@ const SignUp = ({ navigation }: SignUpProps) => {
             </Animated.View>
 
             <Animated.View entering={FadeInDown.delay(500).duration(1000).springify()} className="w-full">
-              <TouchableOpacity className="bg-sky-500 w-full rounded-2xl p-3" onPress={handleSubmit}>
-                <Text className="text-white text-xl font-semibold text-center">SignUp</Text>
+              <TouchableOpacity className="bg-ww-primary w-full rounded-2xl p-3" onPress={handleSubmit}>
+                <Text className="text-ww-white text-xl font-semibold text-center">SignUp</Text>
               </TouchableOpacity>
             </Animated.View>
 
@@ -119,7 +119,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
               entering={FadeInDown.delay(600).duration(1000).springify()}
               className="flex-row justify-center"
             >
-              <Text>Already have an account? </Text>
+              <Text className="text-ww-black">Already have an account? </Text>
               <TouchableOpacity onPress={() => navigation.push("Login")}>
                 <Text className="text-sky-600">Login</Text>
               </TouchableOpacity>
