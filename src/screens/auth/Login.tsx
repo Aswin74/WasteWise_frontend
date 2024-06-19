@@ -34,6 +34,8 @@ const Login = ({ navigation }: LoginProps) => {
   const handleSubmit = (e: GestureResponderEvent) => {
     e.preventDefault()
     setInputValues({ username: username, password: password })
+    setUserName("")
+    setPassword("")
   }
 
   useEffect(() => {

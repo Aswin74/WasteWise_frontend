@@ -39,6 +39,9 @@ const SignUp = ({ navigation }: SignUpProps) => {
       email: email,
       password: password,
     })
+    setUserName("")
+    setEmail("")
+    setPassword("")
   }
 
   useEffect(() => {
