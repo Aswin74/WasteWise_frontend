@@ -51,7 +51,7 @@ const Login = ({ navigation }: LoginProps) => {
       <ScrollView>
         <StatusBar style="inverted" />
         {/* Background Image */}
-        <Image className="h-full w-full absolute" source={require("../../assets/wave.png")} />
+        <Image className="h-full w-full absolute" source={require("../../assets/wave.svg")} />
         {/* Logo and extra icons */}
         <View className="top-28 w-full items-center pb-6">
           <Animated.Image
