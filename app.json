@@ -4,7 +4,7 @@
     "slug": "WasteWise_frontend",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "src/assets/icon.png",
+    "icon": "src/assets/logo/ww_logo_sm.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "src/assets/logo/w_splash.png",
