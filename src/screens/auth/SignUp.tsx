@@ -32,6 +32,17 @@ const SignUp = ({ navigation }: SignUpProps) => {
     password: "",
   })
 
+  // Random Code for verification.
+  const generateVerificationCode = (length: number): string => {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+    let result = ""
+    const charslength = chars.length
+    for (let i = 0; i < length; i++) {
+      result += chars.charAt(Math.floor(Math.random() * charslength))
+    }
+    return result
+  }
+
   const handleSubmit = (e: GestureResponderEvent) => {
     e.preventDefault()
     setInputValues({
@@ -42,11 +53,13 @@ const SignUp = ({ navigation }: SignUpProps) => {
     setUserName("")
     setEmail("")
     setPassword("")
+
+    console.log("code:", generateVerificationCode(6))
   }
 
   useEffect(() => {
     console.log(inputValues)
-  }, [inputValues])
+  }, [])
 
   return (
     <KeyboardAvoidingView
