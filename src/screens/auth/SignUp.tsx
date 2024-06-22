@@ -22,9 +22,18 @@ import Animated, {
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootStackParamList } from "../../navigation/Router"
 // types
-import { SignUpInput } from "../../types"
+import { EmailData, SignUpInput } from "../../types"
+// import {Env} from "../../types/env"
+//functions
+import { sendEmail } from "../../functions"
 
 type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
+
+// const service_id =process.env.EMAIL_JS_SERVICE_ID || Env.EMAIL_JS_SERVICE_ID
+const service_id = "service_18nvoaw"
+const template_id = "template_hrxbnbj"
+const user_id = "auihK9lT1-3yCjdUP"
+const accessToken = "Rd2BTbINaktS1Iux6JSwl"
 
 const SignUp = ({ navigation }: SignUpProps) => {
     const [username, setUserName] = useState<string>("")
@@ -35,6 +44,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
         username: "",
         email: "",
         password: "",
+        verificationCode: "",
     })
 
     // Random Code for verification.
@@ -62,9 +72,22 @@ const SignUp = ({ navigation }: SignUpProps) => {
             username: username,
             email: email,
             password: password,
+            verificationCode: verificationCode,
         })
 
-        console.log("code:", verificationCode)
+        const emailData: EmailData = {
+            service_id: service_id,
+            template_id: template_id,
+            user_id: user_id,
+            accessToken: accessToken,
+            template_params: {
+                username: username,
+                user_email: email,
+                verificationCode: verificationCode,
+            },
+        }
+
+        sendEmail(emailData)
 
         navigation.navigate("EmailVerification", {
             username,

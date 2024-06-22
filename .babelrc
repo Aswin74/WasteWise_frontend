@@ -1,0 +1,4 @@
+{
+    "presets": ["babel-preset-expo"], // Adjust if needed based on your project setup
+    "plugins": ["module:react-native-dotenv"]
+  }
