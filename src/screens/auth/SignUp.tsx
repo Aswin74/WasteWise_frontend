@@ -87,7 +87,8 @@ const SignUp = ({ navigation }: SignUpProps) => {
             },
         }
 
-        sendEmail(emailData)
+        // Sending Mail
+        // sendEmail(emailData)
 
         navigation.navigate("EmailVerification", {
             username,
