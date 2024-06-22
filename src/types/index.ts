@@ -21,3 +21,9 @@ export interface EmailData {
         verificationCode: string
     }
 }
+
+export interface SignUpData {
+    username: string
+    contact: string
+    password: string
+}
