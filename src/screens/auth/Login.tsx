@@ -25,7 +25,8 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../navigation/Router";
 //type
 import { LoginInput } from "../../types";
-import { ww } from "../../assets";
+// assets
+import { wavebg, ww } from "../../assets";
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
@@ -57,10 +58,7 @@ const Login = ({ navigation }: LoginProps) => {
             <ScrollView>
                 <StatusBar style="inverted" />
                 {/* Background Image */}
-                <Image
-                    className="h-full w-full absolute"
-                    source={require("../../assets/wave.svg")}
-                />
+                <Image className="h-full w-full absolute " source={wavebg} />
                 {/* Logo and extra icons */}
                 <View className="top-28 w-full items-center pb-6">
                     <Animated.Image
@@ -154,7 +152,7 @@ const Login = ({ navigation }: LoginProps) => {
                             <TouchableOpacity
                                 onPress={() => navigation.push("SignUp")}
                             >
-                                <Text className="text-sky-600">SignUp</Text>
+                                <Text className="text-sky-600">Sign Up</Text>
                             </TouchableOpacity>
                         </Animated.View>
                         <TouchableOpacity

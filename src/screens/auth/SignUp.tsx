@@ -26,6 +26,7 @@ import { EmailData, SignUpInput } from "../../types"
 // import {Env} from "../../types/env"
 //functions
 import { sendEmail } from "../../functions"
+import { wavebg } from "../../assets"
 
 type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
 
@@ -116,7 +117,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
             <ScrollView>
                 <Image
                     className="h-full w-full absolute bottom-10"
-                    source={require("../../assets/wave.png")}
+                    source={wavebg}
                 />
 
                 {/* Logo and extra icons */}

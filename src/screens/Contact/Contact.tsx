@@ -35,7 +35,7 @@ const Detail: React.FC<DetailProp> = ({ header, text }) => {
                 <Text className="text-lg font-bold text-left text-gray-700">
                     {header}
                 </Text>
-                <Text className="text-lg font-normal text-left text-black">
+                <Text className="text-lg font-normal text-left text-ww-black">
                     {text}
                 </Text>
             </View>

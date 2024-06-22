@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import InputBox from "../../components/InputBox";
 
 const Feedback: React.FC = () => {
@@ -27,7 +27,7 @@ const Feedback: React.FC = () => {
 
             <InputBox placeholder="Enter your name" />
             <InputBox placeholder="Enter your email" />
-            <InputBox placeholder="Your feedback" />
+            <InputBox placeholder="Let us know your thoughts..." multiline />
 
             <View className="flex flex-row justify-between mt-5 mb-5">
                 {emojis.map((emoji, index) => (
