@@ -6,7 +6,7 @@ const Feedback: React.FC = () => {
     const [selectedEmoji, setSelectedEmoji] = useState<string | null>(null);
     const [showFeedbackMessage, setShowFeedbackMessage] =
         useState<boolean>(false);
-    const emojis = ["😃", "😊", "😐", "😞", "😠"];
+    const emojis = ["😠", "😞", "😐", "😊", "😃"];
 
     const handleEmojiSelection = (emoji: string) => {
         setSelectedEmoji(emoji);
@@ -21,7 +21,9 @@ const Feedback: React.FC = () => {
 
     return (
         <View className="flex-1 p-5 bg-ww-white">
-            <Text className="text-xl font-bold mb-5">Feedback</Text>
+            <Text className="text-2xl font-bold mb-8 text-center text-ww-black">
+                Feedback
+            </Text>
 
             <InputBox placeholder="Enter your name" />
             <InputBox placeholder="Enter your email" />

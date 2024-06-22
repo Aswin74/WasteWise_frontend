@@ -1,6 +1,6 @@
-import { StatusBar } from "expo-status-bar"
-import React, { useState, useEffect } from "react"
-import axios from "axios"
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import {
     View,
@@ -12,36 +12,37 @@ import {
     Platform,
     ScrollView,
     GestureResponderEvent,
-} from "react-native"
+} from "react-native";
 import Animated, {
     FadeIn,
     FadeInDown,
     FadeInUp,
     FadeOut,
-} from "react-native-reanimated"
+} from "react-native-reanimated";
 
 // Navigation
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { RootStackParamList } from "../../navigation/Router"
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../navigation/Router";
 //type
-import { LoginInput } from "../../types"
+import { LoginInput } from "../../types";
+import { ww } from "../../assets";
 
-type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
+type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">;
 
 const Login = ({ navigation }: LoginProps) => {
-    const [username, setUserName] = useState<string>("")
-    const [password, setPassword] = useState<any>("")
+    const [username, setUserName] = useState<string>("");
+    const [password, setPassword] = useState<any>("");
     const [inputValues, setInputValues] = useState<LoginInput>({
         username: "",
         password: "",
-    })
+    });
 
     const handleSubmit = (e: GestureResponderEvent) => {
-        e.preventDefault()
-        setInputValues({ username: username, password: password })
-        setUserName("")
-        setPassword("")
-    }
+        e.preventDefault();
+        setInputValues({ username: username, password: password });
+        setUserName("");
+        setPassword("");
+    };
 
     // useEffect(() => {
     //   console.log(inputValues)
@@ -68,7 +69,7 @@ const Login = ({ navigation }: LoginProps) => {
                             .springify()
                             .damping(8)}
                         className="h-40 w-40 rounded-full"
-                        source={require("../../assets/logo/ww.png")}
+                        source={ww}
                     />
                     {/* <Animated.Text
                         entering={FadeInUp.delay(400)
@@ -165,7 +166,7 @@ const Login = ({ navigation }: LoginProps) => {
                 </View>
             </ScrollView>
         </KeyboardAvoidingView>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;
