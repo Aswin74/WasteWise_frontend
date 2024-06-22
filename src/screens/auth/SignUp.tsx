@@ -1,5 +1,5 @@
-import { StatusBar } from "expo-status-bar"
-import React, { useEffect, useState } from "react"
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect, useState } from "react";
 import {
     View,
     Text,
@@ -10,70 +10,72 @@ import {
     Platform,
     ScrollView,
     GestureResponderEvent,
-} from "react-native"
+} from "react-native";
 import Animated, {
     FadeIn,
     FadeInDown,
     FadeInUp,
     FadeOut,
-} from "react-native-reanimated"
+} from "react-native-reanimated";
 
 // Navigation
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { RootStackParamList } from "../../navigation/Router"
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../navigation/Router";
 // types
-import { EmailData, SignUpInput } from "../../types"
+import { EmailData, SignUpInput } from "../../types";
 // import {Env} from "../../types/env"
 //functions
-import { sendEmail } from "../../functions"
+import { sendEmail } from "../../functions";
+// assets
+import { wavebg } from "../../assets";
 
-type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">
+type SignUpProps = NativeStackScreenProps<RootStackParamList, "SignUp">;
 
 // const service_id =process.env.EMAIL_JS_SERVICE_ID || Env.EMAIL_JS_SERVICE_ID
-const service_id = "service_18nvoaw"
-const template_id = "template_hrxbnbj"
-const user_id = "auihK9lT1-3yCjdUP"
-const accessToken = "Rd2BTbINaktS1Iux6JSwl"
+const service_id = "service_18nvoaw";
+const template_id = "template_hrxbnbj";
+const user_id = "auihK9lT1-3yCjdUP";
+const accessToken = "Rd2BTbINaktS1Iux6JSwl";
 
 const SignUp = ({ navigation }: SignUpProps) => {
-    const [username, setUserName] = useState<string>("")
-    const [email, setEmail] = useState<string>("")
-    const [password, setPassword] = useState<any>("")
+    const [username, setUserName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<any>("");
 
     const [inputValues, setInputValues] = useState<SignUpInput>({
         username: "",
         email: "",
         password: "",
         verificationCode: "",
-    })
+    });
 
     // Random Code for verification.
-    const [verificationCode, setVerificationCode] = useState<string>("")
+    const [verificationCode, setVerificationCode] = useState<string>("");
 
     const generateVerificationCode = () => {
         const chars =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
-        let result = ""
-        const charslength = chars.length
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        let result = "";
+        const charslength = chars.length;
         for (let i = 0; i < 6; i++) {
-            result += chars.charAt(Math.floor(Math.random() * charslength))
+            result += chars.charAt(Math.floor(Math.random() * charslength));
         }
 
-        setVerificationCode(result)
-    }
+        setVerificationCode(result);
+    };
 
     useEffect(() => {
-        generateVerificationCode()
-    }, [])
+        generateVerificationCode();
+    }, []);
 
     const handleSubmit = (e: GestureResponderEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         setInputValues({
             username: username,
             email: email,
             password: password,
             verificationCode: verificationCode,
-        })
+        });
 
         const emailData: EmailData = {
             service_id: service_id,
@@ -85,25 +87,25 @@ const SignUp = ({ navigation }: SignUpProps) => {
                 user_email: email,
                 verificationCode: verificationCode,
             },
-        }
+        };
 
-        sendEmail(emailData)
+        sendEmail(emailData);
 
         navigation.navigate("EmailVerification", {
             username,
             email,
             password,
             verificationCode,
-        })
+        });
 
-        setUserName("")
-        setEmail("")
-        setPassword("")
-    }
+        setUserName("");
+        setEmail("");
+        setPassword("");
+    };
 
     useEffect(() => {
-        console.log("signup: ", inputValues)
-    }, [inputValues])
+        console.log("signup: ", inputValues);
+    }, [inputValues]);
 
     return (
         <KeyboardAvoidingView
@@ -115,7 +117,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
             <ScrollView>
                 <Image
                     className="h-full w-full absolute bottom-10"
-                    source={require("../../assets/wave.png")}
+                    source={wavebg}
                 />
 
                 {/* Logo and extra icons */}
@@ -233,7 +235,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
                 </View>
             </ScrollView>
         </KeyboardAvoidingView>
-    )
-}
+    );
+};
 
-export default SignUp
+export default SignUp;
