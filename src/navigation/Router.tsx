@@ -3,6 +3,7 @@ import Login from "../screens/auth/Login"
 import SignUp from "../screens/auth/SignUp"
 import TabNavigator from "./TabNavigator"
 import Email from "../screens/verification/Email"
+import { ScreenStack } from "react-native-screens"
 
 export type RootStackParamList = {
     // for passing any parameters to screen with navigation
