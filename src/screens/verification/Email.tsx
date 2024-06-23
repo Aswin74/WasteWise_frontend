@@ -1,53 +1,54 @@
-import React, { useState } from "react"
-import axios from "axios"
+import React, { useState } from "react";
+import axios from "axios";
 import {
     View,
     Text,
     Button,
     SafeAreaView,
     GestureResponderEvent,
-} from "react-native"
+    TouchableOpacity,
+} from "react-native";
 // Navigation
-import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { RootStackParamList } from "../../navigation/Router"
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../navigation/Router";
 // types
-import { SignUpData } from "../../types"
+import { SignUpData } from "../../types";
 // Component
-import { InputBox } from "../../components"
+import { InputBox } from "../../components";
 
 type EmailProps = NativeStackScreenProps<
     RootStackParamList,
     "EmailVerification"
->
+>;
 
 const Email: React.FC<EmailProps> = ({ route, navigation }) => {
-    const awsURL = "http://3.106.247.51:8000/userreg/"
-    const { username, email, password, verificationCode } = route.params
+    const awsURL = "http://3.106.247.51:8000/userreg/";
+    const { username, email, password, verificationCode } = route.params;
 
-    const [inputCode, setInputCode] = useState<string>()
+    const [inputCode, setInputCode] = useState<string>();
 
     const [signupData, setSignupData] = useState<SignUpData>({
         username: "",
         contact: "",
         password: "",
-    })
+    });
 
     const handleClick = (e: GestureResponderEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         if (verificationCode === inputCode) {
             setSignupData({
                 username: username,
                 contact: email,
                 password: password,
-            })
+            });
 
-            signUp(signupData)
-            navigation.navigate("Login")
-            console.log("same")
+            signUp(signupData);
+            navigation.navigate("Login");
+            console.log("Verification successful");
         } else {
-            console.log("error code")
+            console.log("Invalid verification code");
         }
-    }
+    };
 
     // Signup function
     const signUp = async (data: SignUpData) => {
@@ -56,25 +57,39 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-            })
+            });
 
-            console.log("Successful", response.data)
-            navigation.navigate("Login")
+            console.log("Signup successful", response.data);
+            navigation.navigate("Login");
         } catch (error) {
-            console.log("FAILED : ", error)
+            console.log("Signup failed: ", error);
         }
-    }
+    };
 
     return (
-        <SafeAreaView className="m-auto">
-            <Text>code: {verificationCode}</Text>
-            <Text>Username: {username}</Text>
-            <Text>email: {email}</Text>
-            <Text>password: {password}</Text>
-            <InputBox value={inputCode} onChangeText={setInputCode} />
-            <Button title="Submit" onPress={handleClick} />
+        <SafeAreaView className="flex-1 justify-center items-center bg-white p-4">
+            <View className="w-full max-w-md p-4 bg-gray-100 rounded-lg shadow-md">
+                <Text className="text-lg font-semibold text-center mb-4">
+                    Email Verification
+                </Text>
+                <Text className="text-gray-700 text-center mb-4">
+                    Enter the verification code sent to {email}
+                </Text>
+                <InputBox
+                    value={inputCode}
+                    onChangeText={setInputCode}
+                    placeholder="Verification Code"
+                    className="mb-4 p-2 border rounded-lg w-full text-center"
+                />
+                <TouchableOpacity
+                    onPress={handleClick}
+                    className="bg-blue-500 p-2 rounded-lg"
+                >
+                    <Text className="text-white text-center">Submit</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
-    )
-}
+    );
+};
 
-export default Email
+export default Email;
