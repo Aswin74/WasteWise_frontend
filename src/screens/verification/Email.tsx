@@ -67,25 +67,24 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
     };
 
     return (
-        <SafeAreaView className="flex-1 justify-center items-center bg-white p-4">
-            <View className="w-full max-w-md p-4 bg-gray-100 rounded-lg shadow-md">
+        <SafeAreaView className="flex-1 justify-center items-center bg-ww-white p-4">
+            <View className="w-full max-w-md p-4 bg-gray-95 rounded-lg shadow-md">
                 <Text className="text-lg font-semibold text-center mb-4">
                     Email Verification
                 </Text>
-                <Text className="text-gray-700 text-center mb-4">
+                <Text className="text- text-center mb-4">
                     Enter the verification code sent to {email}
                 </Text>
                 <InputBox
                     value={inputCode}
                     onChangeText={setInputCode}
                     placeholder="Verification Code"
-                    className="mb-4 p-2 border rounded-lg w-full text-center"
                 />
                 <TouchableOpacity
                     onPress={handleClick}
-                    className="bg-blue-500 p-2 rounded-lg"
+                    className="bg-ww-primary p-2 rounded-lg"
                 >
-                    <Text className="text-white text-center">Submit</Text>
+                    <Text className="text-ww-white text-center">Submit</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
