@@ -4,6 +4,7 @@ interface InputProp {
     value?: string
     placeholder?: string
     multiline?: boolean
+    secureTextEntry?: boolean
     onChangeText?: (text: string) => void
 }
 
@@ -12,6 +13,7 @@ const InputBox: React.FC<InputProp> = ({
     onChangeText,
     placeholder,
     multiline,
+    secureTextEntry,
 }) => {
     return (
         <View className="bg-ww-black/5 rounded-2xl p-4 mb-3">
@@ -22,6 +24,7 @@ const InputBox: React.FC<InputProp> = ({
                 onChangeText={onChangeText}
                 multiline={multiline}
                 numberOfLines={multiline ? 7 : 1}
+                secureTextEntry={secureTextEntry}
             />
         </View>
     )
