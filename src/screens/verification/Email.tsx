@@ -49,6 +49,7 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
         }
     }
 
+    // Signup function
     const signUp = async (data: SignUpData) => {
         try {
             const response = await axios.post(awsURL, data, {
@@ -57,7 +58,7 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
                 },
             })
 
-            console.log("Successful")
+            console.log("Successful", response.data)
             navigation.navigate("Login")
         } catch (error) {
             console.log("FAILED : ", error)
