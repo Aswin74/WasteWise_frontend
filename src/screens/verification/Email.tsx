@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react"
+import axios from "axios"
 import {
     View,
     Text,
@@ -7,48 +7,50 @@ import {
     SafeAreaView,
     GestureResponderEvent,
     TouchableOpacity,
-} from "react-native";
+} from "react-native"
 // Navigation
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../../navigation/Router";
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { RootStackParamList } from "../../navigation/Router"
 // types
-import { SignUpData } from "../../types";
+import { SignUpData } from "../../types"
 // Component
-import { InputBox } from "../../components";
+import { InputBox } from "../../components"
 
 type EmailProps = NativeStackScreenProps<
     RootStackParamList,
     "EmailVerification"
->;
+>
 
 const Email: React.FC<EmailProps> = ({ route, navigation }) => {
-    const awsURL = "http://3.106.247.51:8000/userreg/";
-    const { username, email, password, verificationCode } = route.params;
+    const awsURL = "http://3.106.247.51:8000/userreg/"
+    const { username, email, password, verificationCode } = route.params
 
-    const [inputCode, setInputCode] = useState<string>();
+    const [inputCode, setInputCode] = useState<string>()
 
     const [signupData, setSignupData] = useState<SignUpData>({
         username: "",
         contact: "",
         password: "",
-    });
+    })
 
     const handleClick = (e: GestureResponderEvent) => {
-        e.preventDefault();
+        e.preventDefault()
         if (verificationCode === inputCode) {
             setSignupData({
                 username: username,
                 contact: email,
                 password: password,
-            });
+            })
 
-            signUp(signupData);
-            navigation.navigate("Login");
-            console.log("Verification successful");
+            // SignUp
+            // signUp(signupData);
+
+            navigation.navigate("Login")
+            console.log("Verification successful")
         } else {
-            console.log("Invalid verification code");
+            console.log("Invalid verification code")
         }
-    };
+    }
 
     // Signup function
     const signUp = async (data: SignUpData) => {
@@ -57,14 +59,14 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-            });
+            })
 
-            console.log("Signup successful", response.data);
-            navigation.navigate("Login");
+            console.log("Signup successful", response.data)
+            navigation.navigate("Login")
         } catch (error) {
-            console.log("Signup failed: ", error);
+            console.log("Signup failed: ", error)
         }
-    };
+    }
 
     return (
         <SafeAreaView className="flex-1 justify-center items-center bg-ww-white p-4">
@@ -88,7 +90,7 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
                 </TouchableOpacity>
             </View>
         </SafeAreaView>
-    );
-};
+    )
+}
 
-export default Email;
+export default Email

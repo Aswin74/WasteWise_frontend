@@ -53,7 +53,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
 
     const generateVerificationCode = () => {
         const chars =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+            "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz1234567890"
         let result = ""
         const charslength = chars.length
         for (let i = 0; i < 6; i++) {

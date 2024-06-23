@@ -46,7 +46,7 @@ const Login = ({ navigation }: LoginProps) => {
         setInputValues({ username: username, password: password })
 
         // Login function
-        login(inputValues)
+        // login(inputValues)
 
         setUserName("")
         setPassword("")
