@@ -27,11 +27,12 @@ import { RootStackParamList } from "../../navigation/Router"
 import { LoginInput } from "../../types"
 // assets
 import { wavebg, ww } from "../../assets"
+import { AppBtn } from "../../components"
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
 
 const Login = ({ navigation }: LoginProps) => {
-    const awsURL = "http://3.106.247.51:8000/login/"
+    const awsURL = "http://3.106.247.51:8000"
 
     const [username, setUserName] = useState<string>("")
     const [password, setPassword] = useState<any>("")
@@ -44,6 +45,7 @@ const Login = ({ navigation }: LoginProps) => {
         e.preventDefault()
         setInputValues({ username: username, password: password })
 
+        // Login function
         login(inputValues)
 
         setUserName("")
@@ -53,7 +55,7 @@ const Login = ({ navigation }: LoginProps) => {
     // Login function
     const login = async (data: LoginInput) => {
         try {
-            const response = await axios.post(awsURL, data, {
+            const response = await axios.post(`${awsURL}/login`, data, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -151,14 +153,7 @@ const Login = ({ navigation }: LoginProps) => {
                                 .springify()}
                             className="w-full"
                         >
-                            <TouchableOpacity
-                                className="bg-ww-primary w-full rounded-2xl p-3"
-                                onPress={handleSubmit}
-                            >
-                                <Text className="text-ww-white text-xl font-semibold text-center">
-                                    Login
-                                </Text>
-                            </TouchableOpacity>
+                            <AppBtn text="Login" onPress={handleSubmit} />
                         </Animated.View>
 
                         <Animated.View

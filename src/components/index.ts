@@ -1,4 +1,4 @@
-import InputBox from "./InputBox";
+import InputBox from "./InputBox"
+import AppBtn from "./AppBtn"
 
-
-export {InputBox}
+export { InputBox, AppBtn }
