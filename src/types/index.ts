@@ -27,3 +27,10 @@ export interface SignUpData {
     contact: string
     password: string
 }
+
+export interface BinData {
+    title: string
+    level: string
+    latitude: number
+    longitude: number
+}
