@@ -7,6 +7,7 @@ import UserProfile from "../screens/profile/UserProfile"
 import React, { useState } from "react"
 import TabBarIcon from "./TabBarIcon"
 import { useNavigation } from "@react-navigation/native"
+import Insights from "../screens/admin/Insights"
 
 const Tab = createBottomTabNavigator()
 
@@ -94,6 +95,16 @@ const TabNavigator = () => {
                     title: "User Profile",
                 }}
             />
+            {/* <Tab.Screen
+                name="Insights"
+                component={Insights}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <TabBarIcon name="star" color={color} />
+                    ), // Use Ionicons name
+                    title: "Insights",
+                }}
+            /> */}
         </Tab.Navigator>
     )
 }
