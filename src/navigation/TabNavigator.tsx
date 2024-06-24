@@ -10,7 +10,19 @@ const Tab = createBottomTabNavigator()
 
 const TabNavigator = () => {
     return (
-        <Tab.Navigator initialRouteName="Home">
+        <Tab.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+                tabBarActiveTintColor: "#5ce1e6",
+                tabBarInactiveTintColor: "rgba(2,225,230,0.5)",
+                tabBarStyle: {
+                    backgroundColor: "#323650",
+                    borderTopColor: "#6b7280",
+                    borderTopWidth: 1,
+                },
+                headerShown: false,
+            }}
+        >
             <Tab.Screen name="Home" component={Home} />
             <Tab.Screen name="Chatbot" component={Chatbot} />
             <Tab.Screen name="Contact" component={Contact} />

@@ -25,6 +25,8 @@ const InputBox: React.FC<InputProp> = ({
                 placeholder={placeholder}
                 placeholderTextColor={"gray"}
                 value={value}
+                style={{ textAlignVertical: "top" }}
+                className="h-full w-full"
                 onChangeText={onChangeText}
                 multiline={multiline}
                 numberOfLines={multiline ? 7 : 1}
@@ -39,7 +41,7 @@ const InputBox: React.FC<InputProp> = ({
                         name={showPassword ? "eye-off-outline" : "eye-outline"}
                         size={24}
                         color="#6b7280"
-                        style={{ padding: 10 }}
+                        className="-ml-5 my-0"
                     />
                 </TouchableOpacity>
             )}
