@@ -1,4 +1,6 @@
-import { Text, TextInput, View } from "react-native"
+import { useState } from "react"
+import { Text, TextInput, TouchableOpacity, View } from "react-native"
+import { Ionicons } from "react-native-vector-icons"
 
 interface InputProp {
     value?: string
@@ -15,8 +17,10 @@ const InputBox: React.FC<InputProp> = ({
     multiline,
     secureTextEntry,
 }) => {
+    const [showPassword, setShowPassword] = useState(false)
+
     return (
-        <View className="bg-ww-black/5 rounded-2xl p-4 mb-3">
+        <View className="flex-1 flex-row justify-between bg-ww-black/5 rounded-2xl p-4 mb-3">
             <TextInput
                 placeholder={placeholder}
                 placeholderTextColor={"gray"}
@@ -24,8 +28,21 @@ const InputBox: React.FC<InputProp> = ({
                 onChangeText={onChangeText}
                 multiline={multiline}
                 numberOfLines={multiline ? 7 : 1}
-                secureTextEntry={secureTextEntry}
+                secureTextEntry={showPassword}
             />
+
+            {secureTextEntry && (
+                <TouchableOpacity
+                    onPress={() => setShowPassword(!showPassword)}
+                >
+                    <Ionicons
+                        name={showPassword ? "eye-off-outline" : "eye-outline"}
+                        size={24}
+                        color="#6b7280"
+                        style={{ padding: 10 }}
+                    />
+                </TouchableOpacity>
+            )}
         </View>
     )
 }
