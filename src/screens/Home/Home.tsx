@@ -1,6 +1,9 @@
 import { View, Text, StyleSheet } from "react-native"
 import React, { useState, useEffect } from "react"
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps"
+import MapViewDirections from "react-native-maps-directions"
+import * as Location from "expo-location"
+
 import axios from "axios"
 // types
 import { BinData } from "../../types"
@@ -9,6 +12,30 @@ import CustomBinIcon from "./CustomBinIcon"
 import CustomCallout from "./CustomCallout"
 
 const Home = () => {
+    const [location, setLocation] = useState<any>()
+    const [errorMsg, setErrorMsg] = useState<string>("")
+
+    useEffect(() => {
+        ;(async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync()
+            if (status !== "granted") {
+                setErrorMsg("Permission to access location was denied")
+                return
+            }
+
+            let location = await Location.getCurrentPositionAsync({})
+            setLocation(location)
+        })()
+    }, [])
+
+    let text = "Waiting.."
+    if (errorMsg) {
+        text = errorMsg
+    } else if (location) {
+        text = JSON.stringify(location)
+        console.log(location)
+    }
+
     const [loc] = useState({
         latitude: 8.564585239157829,
         longitude: 76.88430643863097,
@@ -58,6 +85,7 @@ const Home = () => {
                 initialRegion={loc}
                 showsUserLocation={true}
                 showsMyLocationButton={true}
+                accessibilityRole="button"
             >
                 {binLocation.map((bin) => (
                     <Marker
@@ -73,6 +101,18 @@ const Home = () => {
                         <CustomCallout title={bin.title} level={bin.level} />
                     </Marker>
                 ))}
+
+                {/* <MapViewDirections
+                    origin={{
+                        latitude: 8.564585239157829,
+                        longitude: 76.88430643863097,
+                    }}
+                    destination={{
+                        latitude: 8.575355587468675,
+                        longitude: 76.8754303241394,
+                    }}
+                    apikey="AIzaSyCjnwJ28iI_Bmo-W82P9WNK8caBMEHO8uQ"
+                /> */}
             </MapView>
         </View>
     )
