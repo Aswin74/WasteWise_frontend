@@ -46,7 +46,7 @@ const Login = ({ navigation }: LoginProps) => {
         setInputValues({ username: username, password: password })
 
         // Login function
-        // login(inputValues)
+        login(inputValues)
 
         setUserName("")
         setPassword("")
@@ -55,10 +55,11 @@ const Login = ({ navigation }: LoginProps) => {
     // Login function
     const login = async (data: LoginInput) => {
         try {
-            const response = await axios.post(`${awsURL}/login`, data, {
+            const response = await axios.get(`${awsURL}/login/`, {
                 headers: {
                     "Content-Type": "application/json",
                 },
+                params: data,
             })
 
             console.log("Successfull", response.data)

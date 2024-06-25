@@ -43,10 +43,9 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
             })
 
             // SignUp
-            // signUp(signupData);
-
-            navigation.navigate("Login")
-            console.log("Verification successful")
+            signUp(signupData)
+            console.log(signupData, "signupp")
+            console.log("Verification Code Matches")
         } else {
             console.log("Invalid verification code")
         }
@@ -60,7 +59,6 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
                     "Content-Type": "application/json",
                 },
             })
-
             console.log("Signup successful", response.data)
             navigation.navigate("Login")
         } catch (error) {
@@ -70,7 +68,7 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
 
     return (
         <SafeAreaView className="flex-1 justify-center items-center bg-ww-white p-4">
-            <View className="w-full max-w-md p-4 bg-gray-95 rounded-lg shadow-md">
+            <View className="h-56 max-w-md p-4 bg-gray-95 rounded-lg shadow-md">
                 <Text className="text-lg font-semibold text-center mb-4">
                     Email Verification
                 </Text>
@@ -78,10 +76,11 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
                     Enter the verification code sent to {email}
                 </Text>
                 <InputBox
+                    placeholder="Verification Code"
                     value={inputCode}
                     onChangeText={setInputCode}
-                    placeholder="Verification Code"
                 />
+
                 <TouchableOpacity
                     onPress={handleClick}
                     className="bg-ww-primary p-2 rounded-lg"
