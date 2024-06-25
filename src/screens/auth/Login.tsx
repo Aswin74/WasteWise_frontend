@@ -31,9 +31,8 @@ import { AppBtn } from "../../components"
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
 
+export const awsURL = "http://3.26.113.171"
 const Login = ({ navigation }: LoginProps) => {
-    const awsURL = "http://3.106.247.51:8000"
-
     const [username, setUserName] = useState<string>("")
     const [password, setPassword] = useState<any>("")
     const [inputValues, setInputValues] = useState<LoginInput>({

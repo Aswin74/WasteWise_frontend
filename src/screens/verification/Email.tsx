@@ -15,6 +15,7 @@ import { RootStackParamList } from "../../navigation/Router"
 import { SignUpData } from "../../types"
 // Component
 import { InputBox } from "../../components"
+import { awsURL } from "../auth/Login"
 
 type EmailProps = NativeStackScreenProps<
     RootStackParamList,
@@ -22,7 +23,6 @@ type EmailProps = NativeStackScreenProps<
 >
 
 const Email: React.FC<EmailProps> = ({ route, navigation }) => {
-    const awsURL = "http://3.106.247.51:8000/userreg/"
     const { username, email, password, verificationCode } = route.params
 
     const [inputCode, setInputCode] = useState<string>()
@@ -54,7 +54,7 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
     // Signup function
     const signUp = async (data: SignUpData) => {
         try {
-            const response = await axios.post(awsURL, data, {
+            const response = await axios.post(`${awsURL}/userreg/`, data, {
                 headers: {
                     "Content-Type": "application/json",
                 },
