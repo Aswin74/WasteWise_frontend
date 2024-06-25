@@ -28,14 +28,14 @@ const Detail: React.FC<DetailProp> = ({ header, text }) => {
             <Ionicons
                 name={getIconName(header)}
                 size={24}
-                color="#6B7280"
+                color="white"
                 style={{ marginRight: 8 }}
             />
             <View>
-                <Text className="text-lg font-bold text-left text-gray-700">
+                <Text className="text-lg font-bold text-left text-ww-white">
                     {header}
                 </Text>
-                <Text className="text-lg font-normal text-left text-ww-black">
+                <Text className="text-lg font-normal text-left text-ww-white">
                     {text}
                 </Text>
             </View>
@@ -51,7 +51,7 @@ const Contact: React.FC = () => {
     };
 
     return (
-        <View className="flex-1 p-5 bg-white justify-center items-center">
+        <View className="flex-1 p-5 bg-ww-white justify-center items-center">
             <Image
                 source={contactIMG}
                 style={{
@@ -64,7 +64,7 @@ const Contact: React.FC = () => {
             <Text className="mt- text-2xl font-bold mb-5 text-center text-ww-black">
                 Get in Touch
             </Text>
-            <View className="p-6 rounded-lg w-full bg-violet-100 max-w-md">
+            <View className="p-6 rounded-lg w-full bg-ww-primary/80 max-w-md">
                 <Detail header="Name" text={adminDetails.name} />
                 <Detail header="Address" text={adminDetails.address} />
                 <Detail header="ContactNo" text={adminDetails.contactNo} />
