@@ -7,6 +7,7 @@ import UserProfile from "../screens/profile/UserProfile"
 import React, { useState } from "react"
 import TabBarIcon from "./TabBarIcon"
 import { useNavigation } from "@react-navigation/native"
+import DrawerNavigation from "./DrawerNavigation"
 
 const Tab = createBottomTabNavigator()
 
@@ -32,7 +33,7 @@ const TabNavigator = () => {
                 headerStyle: {
                     backgroundColor: "#323650",
                 },
-                tabBarIconStyle: { marginTop: 5 }, // Adjust icon positioning if needed
+                tabBarIconStyle: { marginTop: 5 },
             }}
         >
             <Tab.Screen
@@ -58,31 +59,32 @@ const TabNavigator = () => {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="chatbubble" color={color} />
-                    ), // Use Ionicons name
+                    ),
                     title: "Chatbot",
                 }}
             />
-            {/* Repeat for other screens */}
+
             <Tab.Screen
                 name="About Us"
-                component={Contact}
+                component={DrawerNavigation}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="information-circle" color={color} />
-                    ), // Use Ionicons name
-                    title: "About us",
+                    ),
+                    title: "Contact us",
+                    headerShown: false,
                 }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Feedback"
                 component={Feedback}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="star" color={color} />
-                    ), // Use Ionicons name
+                    ), 
                     title: "Feedback",
                 }}
-            />
+            /> */}
 
             <Tab.Screen
                 name="UserProfile"
@@ -90,8 +92,8 @@ const TabNavigator = () => {
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="person" color={color} />
-                    ), // Use Ionicons name
-                    title: "User Profile",
+                    ),
+                    title: "Profile",
                 }}
             />
         </Tab.Navigator>
