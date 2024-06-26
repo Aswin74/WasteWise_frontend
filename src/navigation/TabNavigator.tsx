@@ -7,8 +7,10 @@ import UserProfile from "../screens/profile/UserProfile"
 import React, { useState } from "react"
 import TabBarIcon from "./TabBarIcon"
 import DrawerNavigation from "./DrawerNavigation"
+import AdminDrawer from "./AdminDrawer"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootStackParamList } from "./Router"
+import BinAdd from "../screens/admin/BinAdd"
 
 type HomeTabProps = NativeStackScreenProps<RootStackParamList, "HomeTabs">
 const Tab = createBottomTabNavigator()
@@ -80,16 +82,17 @@ const TabNavigator: React.FC<HomeTabProps> = ({ route }) => {
                     headerShown: false,
                 }}
             />
-            {/* <Tab.Screen
-                name="Feedback"
-                component={Feedback}
+            <Tab.Screen
+                name="Admin"
+                component={AdminDrawer}
                 options={{
+                    headerShown: false,
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="star" color={color} />
-                    ), 
-                    title: "Feedback",
+                        <TabBarIcon name="person" color={color} />
+                    ),
+                    title: "Admin",
                 }}
-            /> */}
+            />
 
             <Tab.Screen
                 name="UserProfile"
