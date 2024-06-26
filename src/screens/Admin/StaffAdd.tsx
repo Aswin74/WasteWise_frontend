@@ -1,17 +1,41 @@
 import React, { useState } from "react"
 import { View, Text, TextInput, Button, Alert } from "react-native"
 import { AppBtn } from "../../components"
+import { SignUpData } from "../../types"
+import axios from "axios"
+import { awsURL } from "../auth/Login"
 
 const StaffAdd = () => {
-    const [firstName, setFirstName] = useState("")
+    const [staffName, setStaffName] = useState("")
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    // POST request
+    const addStaff = async (staffData: SignUpData) => {
+        try {
+            const response = await axios.post(
+                `${awsURL}/staffreg/`,
+                staffData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            )
+            console.log(response.data)
+        } catch (error) {
+            console.log("failed", error)
+        }
+    }
+
     const handleAddWorker = () => {
-        if (firstName && email && password) {
-            // Perform the add worker action, e.g., send data to backend
-            Alert.alert("Worker Added", `Name: ${firstName} \nEmail: ${email}`)
+        if (staffName && email && password) {
+            addStaff({
+                username: staffName,
+                contact: email,
+                password: password,
+            })
         } else {
             Alert.alert("Error", "Please fill out all fields.")
         }
@@ -22,9 +46,9 @@ const StaffAdd = () => {
             <Text className="text-2xl font-bold mb-4">Add New Worker</Text>
             <View className="w-full max-w-md">
                 <TextInput
-                    placeholder="First Name"
-                    value={firstName}
-                    onChangeText={setFirstName}
+                    placeholder="Staff Name"
+                    value={staffName}
+                    onChangeText={setStaffName}
                     className="border p-2 mb-4 rounded"
                 />
 

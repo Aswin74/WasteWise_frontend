@@ -13,18 +13,18 @@ import axios from "axios"
 
 interface BinAddData {
     id: string
-    longitude: number
-    latitude: number
+    longitude: string
+    latitude: string
     location: string
-    capacity: number
+    capacity: string
 }
 
 const BinAdd = () => {
     const [binName, setBinName] = useState<string>("")
     const [location, setLocation] = useState<string>("")
-    const [capacity, setCapacity] = useState<number | undefined>()
-    const [latitude, setLatitude] = useState<number | undefined>()
-    const [longitude, setLongitude] = useState<number | undefined>()
+    const [capacity, setCapacity] = useState<string>("")
+    const [latitude, setLatitude] = useState<string>("")
+    const [longitude, setLongitude] = useState<string>("")
 
     const handleAddBin = () => {
         if (binName && location && capacity && latitude && longitude) {
@@ -79,18 +79,18 @@ const BinAdd = () => {
                     value={
                         capacity !== undefined ? capacity.toString() : undefined
                     }
-                    onChangeText={(text) => setCapacity(Number(text))}
+                    onChangeText={(text) => setCapacity(text)}
                     style={styles.input}
-                    keyboardType="numeric"
+                    keyboardType="decimal-pad"
                 />
                 <TextInput
                     placeholder="Latitude"
                     value={
                         latitude !== undefined ? latitude.toString() : undefined
                     }
-                    onChangeText={(text) => setLatitude(Number(text))}
+                    onChangeText={(text) => setLatitude(text)}
                     style={styles.input}
-                    keyboardType="numeric"
+                    keyboardType="decimal-pad"
                 />
                 <TextInput
                     placeholder="Longitude"
@@ -99,9 +99,9 @@ const BinAdd = () => {
                             ? longitude.toString()
                             : undefined
                     }
-                    onChangeText={(text) => setLongitude(Number(text))}
+                    onChangeText={(text) => setLongitude(text)}
                     style={styles.input}
-                    keyboardType="numeric"
+                    keyboardType="decimal-pad"
                 />
                 <AppBtn text="Add Bin" onPress={handleAddBin} />
             </View>

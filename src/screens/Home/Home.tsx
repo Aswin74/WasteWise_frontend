@@ -26,6 +26,8 @@ const Home: React.FC = () => {
     const [location, setLocation] = useState<any>()
     const [errorMsg, setErrorMsg] = useState<string>("")
 
+    const [binData, setBinData] = useState<BinData[]>([])
+
     console.log("rsponse:::", username, role)
 
     useEffect(() => {
@@ -89,22 +91,27 @@ const Home: React.FC = () => {
         },
     ])
 
-    const [binData, setBinData] = useState<BinData>()
+    const getBinData = async () => {
+        try {
+            const response = await axios.get(`${awsURL}/getdata/`)
+            setBinData(response.data)
+            console.log("Successfull Bin", response.data, "&&", binData)
+        } catch (error) {
+            console.log("BinFetching Failed", error)
+        }
+    }
 
-    // const getBinData=async () => {
-    //     try {
-    //         const response = await axios.get(`${awsURL}/getdata`)
-    //         setBinData(response.data)
-    //     } catch (error) {
-    //         console.log("BinFetching Failed",error)
-    //     }
-    // }
+    useEffect(() => {
+        // const intervalId = setInterval(() => {
+        //     getBinData()
+        // }, 30 * 1000)
 
-    // useEffect(
-    //   getBinData()
+        // return () => {
+        //     clearInterval(intervalId)
+        // }
 
-    //   }
-    // }, [binData])
+        getBinData()
+    }, [])
 
     return (
         <View style={{ flex: 1 }}>
@@ -117,7 +124,7 @@ const Home: React.FC = () => {
                 showsMyLocationButton={true}
                 accessibilityRole="button"
             >
-                {binLocation.map((bin) => (
+                {/* {binLocation.map((bin) => (
                     <Marker
                         key={bin.title}
                         coordinate={{
@@ -130,7 +137,34 @@ const Home: React.FC = () => {
                         <CustomBinIcon level={bin.level} />
                         <CustomCallout title={bin.title} level={bin.level} />
                     </Marker>
-                ))}
+                ))} */}
+
+                {binData.map((binda) => {
+                    // if (
+                    //     binda.latitude !== null &&
+                    //     binda.longitude !== null &&
+                    //     binda.level !== null
+                    // ) {
+                    return (
+                        <Marker
+                            key={binda.bin_id}
+                            coordinate={{
+                                latitude: 8.564345,
+                                longitude: 76.8880782,
+                            }}
+                            pinColor="blue"
+                        >
+                            <CustomBinIcon level={binda.level} />
+                            <CustomCallout
+                                title={binda.bin_id ?? "null"}
+                                level={binda.level}
+                            />
+                        </Marker>
+                    )
+                    // } else {
+                    //     return null
+                    // }
+                })}
 
                 {/* <MapViewDirections
                     origin={{

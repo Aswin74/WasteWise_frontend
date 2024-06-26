@@ -29,7 +29,10 @@ export interface SignUpData {
 }
 
 export interface BinData {
-    title: string
+    bin_id?: string
+    location?: string
+    capacity?: number
+    title?: string
     level: number
     latitude: number
     longitude: number
