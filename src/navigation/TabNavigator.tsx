@@ -6,13 +6,16 @@ import Feedback from "../screens/Feedback/Feedback"
 import UserProfile from "../screens/profile/UserProfile"
 import React, { useState } from "react"
 import TabBarIcon from "./TabBarIcon"
-import { useNavigation } from "@react-navigation/native"
 import DrawerNavigation from "./DrawerNavigation"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
+import { RootStackParamList } from "./Router"
 
+type HomeTabProps = NativeStackScreenProps<RootStackParamList, "HomeTabs">
 const Tab = createBottomTabNavigator()
 
-const TabNavigator = () => {
-    const navigation = useNavigation()
+const TabNavigator: React.FC<HomeTabProps> = ({ route }) => {
+    const { username, role } = route.params
+
     const [activeTab, setActiveTab] = useState("Home")
 
     const handlePress = (name: string) => {
@@ -38,21 +41,23 @@ const TabNavigator = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={Home}
+                initialParams={{ username, role }}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="home" color={color} />
                     ),
                     title: "Home",
 
-                    tabBarStyle: [
-                        {
-                            backgroundColor:
-                                activeTab === "Chatbot" ? "#222" : "#323650",
-                        },
-                    ],
+                    // tabBarStyle: [
+                    //     {
+                    //         backgroundColor:
+                    //             activeTab === "Chatbot" ? "#222" : "#323650",
+                    //     },
+                    // ],
                 }}
-            />
+            >
+                {() => <Home />}
+            </Tab.Screen>
             <Tab.Screen
                 name="Chatbot"
                 component={Chatbot}
@@ -89,6 +94,7 @@ const TabNavigator = () => {
             <Tab.Screen
                 name="UserProfile"
                 component={UserProfile}
+                initialParams={{ username, role }}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="person" color={color} />

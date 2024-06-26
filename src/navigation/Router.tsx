@@ -8,7 +8,10 @@ export type RootStackParamList = {
     // for passing any parameters to screen with navigation
     Login: undefined
     SignUp: undefined
-    HomeTabs: undefined
+    HomeTabs: {
+        username: string
+        role: string
+    }
     EmailVerification: {
         username: string
         email: string

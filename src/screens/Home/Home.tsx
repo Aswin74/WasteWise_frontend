@@ -1,19 +1,32 @@
 import { View, Text, StyleSheet } from "react-native"
 import React, { useState, useEffect } from "react"
+// Maps
 import MapView, { Callout, Marker, PROVIDER_GOOGLE } from "react-native-maps"
 import MapViewDirections from "react-native-maps-directions"
 import * as Location from "expo-location"
 
 import axios from "axios"
+import { RouteProp, useRoute } from "@react-navigation/native"
 // types
 import { BinData } from "../../types"
+import { LoginResponse } from "../auth/Login"
+
 // component
 import CustomBinIcon from "./CustomBinIcon"
 import CustomCallout from "./CustomCallout"
 
-const Home = () => {
+interface HomeScreenProps {
+    route: RouteProp<{ params: LoginResponse }>
+}
+
+const Home: React.FC = () => {
+    const route = useRoute()
+    const { username, role } = route.params as LoginResponse
+
     const [location, setLocation] = useState<any>()
     const [errorMsg, setErrorMsg] = useState<string>("")
+
+    console.log("rsponse:::", username, role)
 
     useEffect(() => {
         ;(async () => {

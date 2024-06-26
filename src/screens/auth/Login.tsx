@@ -28,45 +28,83 @@ import { LoginInput } from "../../types"
 // assets
 import { wavebg, ww } from "../../assets"
 import { AppBtn } from "../../components"
+import { StackActions } from "@react-navigation/native"
 
 type LoginProps = NativeStackScreenProps<RootStackParamList, "Login">
+
+export type LoginResponse = {
+    username: string
+    role: string
+}
 
 export const awsURL = "http://3.26.113.171"
 const Login = ({ navigation }: LoginProps) => {
     const [username, setUserName] = useState<string>("")
-    const [password, setPassword] = useState<any>("")
-    const [inputValues, setInputValues] = useState<LoginInput>({
-        username: "",
-        password: "",
-    })
+    const [password, setPassword] = useState<string>("")
+    // const [inputValues, setInputValues] = useState<LoginInput>({
+    //     username: "",
+    //     password: "",
+    // })
 
-    const handleSubmit = (e: GestureResponderEvent) => {
+    const handleSubmit = async (e: GestureResponderEvent) => {
         e.preventDefault()
-        setInputValues({ username: username, password: password })
+        // setInputValues({ username: username, password: password })
+        setUserName(username)
+        setPassword(password)
 
         // Login function
-        login(inputValues)
+        // login(inputValues)
 
-        setUserName("")
-        setPassword("")
-    }
-
-    // Login function
-    const login = async (data: LoginInput) => {
         try {
-            const response = await axios.get(`${awsURL}/login/`, {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                params: data,
-            })
-
+            const response = await axios.post(
+                `${awsURL}/login/`,
+                { username, password },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            )
             console.log("Successfull", response.data)
-            navigation.navigate("HomeTabs")
+
+            if (response.status === 200) {
+                const userData: LoginResponse = response.data
+                console.log("hello, data :", userData)
+                navigation.navigate("HomeTabs", userData)
+            } else {
+                throw new Error("Response/Nav Error")
+            }
         } catch (error) {
             console.log("Failed", error)
         }
     }
+
+    // Login function
+    // const login = async (data: LoginInput) => {
+    //     try {
+    //         const response = await axios.post(`${awsURL}/login/`, data, {
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         })
+    //         console.log("Successfull", response.data)
+
+    //         if (response.status === 200) {
+    //             const userData: LoginData = response.data
+    //             navigation.dispatch(
+    //                 StackActions.push("HomeTabs", {
+    //                     params: { username: "Wasin", role: "admin" },
+    //                 })
+    //             )
+    //         } else {
+    //             throw new Error("Response/Nav Error")
+    //         }
+
+    //         // navigation.navigate("HomeTabs")
+    //     } catch (error) {
+    //         console.log("Failed", error)
+    //     }
+    // }
 
     // useEffect(() => {
     //   console.log(inputValues)
@@ -128,7 +166,7 @@ const Login = ({ navigation }: LoginProps) => {
                                 value={username}
                                 placeholder="Username"
                                 placeholderTextColor={"gray"}
-                                onChangeText={setUserName}
+                                onChangeText={(text) => setUserName(text)}
                             />
                         </Animated.View>
 
@@ -142,7 +180,7 @@ const Login = ({ navigation }: LoginProps) => {
                                 value={password}
                                 placeholder="Password"
                                 placeholderTextColor={"gray"}
-                                onChangeText={setPassword}
+                                onChangeText={(text) => setPassword(text)}
                                 secureTextEntry
                             />
                         </Animated.View>
@@ -171,11 +209,11 @@ const Login = ({ navigation }: LoginProps) => {
                                 <Text className="text-sky-600">Sign Up</Text>
                             </TouchableOpacity>
                         </Animated.View>
-                        <TouchableOpacity
+                        {/* <TouchableOpacity
                             onPress={() => navigation.push("HomeTabs")}
                         >
                             <Text>Home</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                     </View>
                 </View>
             </ScrollView>
