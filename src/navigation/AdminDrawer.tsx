@@ -7,6 +7,7 @@ import {
 import { Text } from "react-native"
 import BinAdd from "../screens/Admin/BinAdd"
 import StaffAdd from "../screens/Admin/StaffAdd"
+import AdminAdd from "../screens/Admin/AdminAdd"
 
 const Drawer = createDrawerNavigator()
 
@@ -55,12 +56,24 @@ const AdminDrawer = () => {
                             activeTintColor="#5ce1e6"
                             inactiveTintColor="#f0efeb"
                         />
+                        <DrawerItem
+                            label={"AdminAdd"}
+                            onPress={() => {
+                                props.navigation.navigate("AdminAdd")
+                            }}
+                            focused={focusedRoute === "AdminAdd"}
+                            activeBackgroundColor="#6b7280"
+                            // inactiveBackgroundColor="red"
+                            activeTintColor="#5ce1e6"
+                            inactiveTintColor="#f0efeb"
+                        />
                     </DrawerContentScrollView>
                 )
             }}
         >
             <Drawer.Screen name="BinAdd" component={BinAdd} />
             <Drawer.Screen name="StaffAdd" component={StaffAdd} />
+            <Drawer.Screen name="AdminAdd" component={AdminAdd} />
         </Drawer.Navigator>
     )
 }

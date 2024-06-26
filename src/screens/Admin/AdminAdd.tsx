@@ -2,16 +2,16 @@ import React, { useState } from "react"
 import { View, Text, TextInput, Button, Alert } from "react-native"
 import { AppBtn } from "../../components"
 
-const StaffAdd = () => {
+const AdminAdd = () => {
     const [firstName, setFirstName] = useState("")
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const handleAddWorker = () => {
+    const handleAdminAdd = () => {
         if (firstName && email && password) {
-            // Perform the add worker action, e.g., send data to backend
-            Alert.alert("Worker Added", `Name: ${firstName} \nEmail: ${email}`)
+            // Perform the add admin action, e.g., send data to backend
+            Alert.alert("Admin Added", `Name: ${firstName} \nEmail: ${email}`)
         } else {
             Alert.alert("Error", "Please fill out all fields.")
         }
@@ -19,7 +19,7 @@ const StaffAdd = () => {
 
     return (
         <View className="flex-1 justify-center items-center bg-gray-100 p-4">
-            <Text className="text-2xl font-bold mb-4">Add New Worker</Text>
+            <Text className="text-2xl font-bold mb-4">Add New Admin</Text>
             <View className="w-full max-w-md">
                 <TextInput
                     placeholder="First Name"
@@ -43,10 +43,10 @@ const StaffAdd = () => {
                     secureTextEntry
                 />
 
-                <AppBtn text="Add User" onPress={handleAddWorker} />
+                <AppBtn text="Add User" onPress={handleAdminAdd} />
             </View>
         </View>
     )
 }
 
-export default StaffAdd
+export default AdminAdd
