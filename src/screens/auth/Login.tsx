@@ -210,7 +210,7 @@ const Login = ({ navigation }: LoginProps) => {
                             </TouchableOpacity>
                         </Animated.View>
                         {/* Temp: kajo */}
-                        {/* <TouchableOpacity
+                        <TouchableOpacity
                             onPress={() =>
                                 navigation.push("HomeTabs", {
                                     username: "ggfdgd",
@@ -219,7 +219,7 @@ const Login = ({ navigation }: LoginProps) => {
                             }
                         >
                             <Text>Home</Text>
-                        </TouchableOpacity> */}
+                        </TouchableOpacity>
                     </View>
                 </View>
             </ScrollView>
