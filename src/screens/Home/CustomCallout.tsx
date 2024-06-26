@@ -4,25 +4,16 @@ import { Callout } from "react-native-maps"
 
 interface CalloutProp {
     title: string
-    level: string
+    level: number
 }
 
 const CustomCallout: React.FC<CalloutProp> = ({ title, level }) => {
     const baseClass = "text-center"
     let textColor
 
-    switch (level) {
-        case "HIGH" || "high":
-            textColor = "text-red-500"
-            break
-
-        case "LOW" || "low":
-            textColor = "text-green-500"
-            break
-
-        default:
-            textColor = "text-ww-logo"
-    }
+    if (level >= 80) textColor = "text-red-500"
+    else if (level <= 40) textColor = "text-green-500"
+    else textColor = "text-ww-logo"
 
     const levelColor = `${baseClass} ${textColor}`
     return (
@@ -30,7 +21,7 @@ const CustomCallout: React.FC<CalloutProp> = ({ title, level }) => {
             <Text className="text-center text-sm font-semibold text-ww-primary">
                 {title}
             </Text>
-            <Text className={levelColor}>{level}</Text>
+            <Text className={levelColor}>{level}%</Text>
         </Callout>
     )
 }

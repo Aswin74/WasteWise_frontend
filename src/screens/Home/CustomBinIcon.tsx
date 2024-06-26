@@ -1,25 +1,16 @@
 import { Ionicons } from "react-native-vector-icons"
 
 interface LevelProp {
-    level: string
+    level: number
 }
 
 const CustomBinIcon: React.FC<LevelProp> = ({ level }) => {
     const baseClass = "bg-ww-primary rounded-full p-1"
     let iconColor
 
-    switch (level) {
-        case "HIGH" || "high":
-            iconColor = "text-red-500"
-            break
-
-        case "LOW" || "low":
-            iconColor = "text-green-500"
-            break
-
-        default:
-            iconColor = "text-ww-logo"
-    }
+    if (level >= 80) iconColor = "text-red-500"
+    else if (level <= 40) iconColor = "text-green-500"
+    else iconColor = "text-ww-logo"
 
     const iconClass = `${baseClass} ${iconColor}`
 

@@ -9,7 +9,7 @@ import axios from "axios"
 import { RouteProp, useRoute } from "@react-navigation/native"
 // types
 import { BinData } from "../../types"
-import { LoginResponse } from "../auth/Login"
+import { LoginResponse, awsURL } from "../auth/Login"
 
 // component
 import CustomBinIcon from "./CustomBinIcon"
@@ -59,35 +59,52 @@ const Home: React.FC = () => {
     const [binLocation, setBinLocation] = useState<BinData[]>([
         {
             title: "Bin001",
-            level: "LOW",
+            level: 24,
             latitude: 8.575355587468675,
             longitude: 76.8754303241394,
         },
         {
             title: "Bin002",
-            level: "MEDIUM",
+            level: 56,
             latitude: 8.555136415343156,
             longitude: 76.8671287722616,
         },
         {
             title: "Bin003",
-            level: "HIGH",
+            level: 87,
             latitude: 8.560182729108378,
             longitude: 76.89829950781248,
         },
         {
             title: "Bin004",
-            level: "LOW",
+            level: 44,
             latitude: 8.572105814249178,
             longitude: 76.89258397378916,
         },
         {
             title: "Bin005",
-            level: "MEDIUM",
+            level: 65,
             latitude: 8.57324524605619,
             longitude: 76.87147890705761,
         },
     ])
+
+    const [binData, setBinData] = useState<BinData>()
+
+    // const getBinData=async () => {
+    //     try {
+    //         const response = await axios.get(`${awsURL}/getdata`)
+    //         setBinData(response.data)
+    //     } catch (error) {
+    //         console.log("BinFetching Failed",error)
+    //     }
+    // }
+
+    // useEffect(
+    //   getBinData()
+
+    //   }
+    // }, [binData])
 
     return (
         <View style={{ flex: 1 }}>
