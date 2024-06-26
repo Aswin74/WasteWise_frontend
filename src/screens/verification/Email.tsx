@@ -36,15 +36,21 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
     const handleClick = (e: GestureResponderEvent) => {
         e.preventDefault()
         if (verificationCode === inputCode) {
-            setSignupData({
+            // setSignupData({
+            //     username: username,
+            //     contact: email,
+            //     password: password,
+            // })
+
+            const data: SignUpData = {
                 username: username,
                 contact: email,
                 password: password,
-            })
+            }
 
             // SignUp
-            signUp(signupData)
-            console.log(signupData, "signupp")
+            signUp(data)
+            console.log(data, "signupp")
             console.log("Verification Code Matches")
         } else {
             console.log("Invalid verification code")
