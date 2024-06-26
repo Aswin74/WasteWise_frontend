@@ -10,7 +10,7 @@ import DrawerNavigation from "./DrawerNavigation"
 import AdminDrawer from "./AdminDrawer"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootStackParamList } from "./Router"
-import BinAdd from "../screens/admin/BinAdd"
+import BinAdd from "../screens/Admin/BinAdd"
 
 type HomeTabProps = NativeStackScreenProps<RootStackParamList, "HomeTabs">
 const Tab = createBottomTabNavigator()

@@ -5,11 +5,9 @@ import {
 } from "@react-navigation/drawer"
 
 import { Text } from "react-native"
-import Contact from "../screens/Contact/Contact"
-import Feedback from "../screens/Feedback/Feedback"
-import AdminAdd from "../screens/admin/BinAdd"
-import BinAdd from "../screens/admin/BinAdd"
-import StaffAdd from "../screens/admin/StaffAdd"
+import BinAdd from "../screens/Admin/BinAdd"
+import StaffAdd from "../screens/Admin/StaffAdd"
+
 const Drawer = createDrawerNavigator()
 
 const AdminDrawer = () => {
