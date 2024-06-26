@@ -8,6 +8,8 @@ import { Text } from "react-native"
 import BinAdd from "../screens/Admin/BinAdd"
 import StaffAdd from "../screens/Admin/StaffAdd"
 import AdminAdd from "../screens/Admin/AdminAdd"
+import Analysis from "../screens/Admin/Analysis"
+import Response from "../screens/Admin/Response"
 
 const Drawer = createDrawerNavigator()
 
@@ -67,6 +69,28 @@ const AdminDrawer = () => {
                             activeTintColor="#5ce1e6"
                             inactiveTintColor="#f0efeb"
                         />
+                        <DrawerItem
+                            label={"Analysis"}
+                            onPress={() => {
+                                props.navigation.navigate("Analysis")
+                            }}
+                            focused={focusedRoute === "Analysis"}
+                            activeBackgroundColor="#6b7280"
+                            // inactiveBackgroundColor="red"
+                            activeTintColor="#5ce1e6"
+                            inactiveTintColor="#f0efeb"
+                        />
+                        <DrawerItem
+                            label={"Response"}
+                            onPress={() => {
+                                props.navigation.navigate("Response")
+                            }}
+                            focused={focusedRoute === "Response"}
+                            activeBackgroundColor="#6b7280"
+                            // inactiveBackgroundColor="red"
+                            activeTintColor="#5ce1e6"
+                            inactiveTintColor="#f0efeb"
+                        />
                     </DrawerContentScrollView>
                 )
             }}
@@ -74,6 +98,8 @@ const AdminDrawer = () => {
             <Drawer.Screen name="BinAdd" component={BinAdd} />
             <Drawer.Screen name="StaffAdd" component={StaffAdd} />
             <Drawer.Screen name="AdminAdd" component={AdminAdd} />
+            <Drawer.Screen name="Analysis" component={Analysis} />
+            <Drawer.Screen name="Response" component={Response} />
         </Drawer.Navigator>
     )
 }

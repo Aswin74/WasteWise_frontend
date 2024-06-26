@@ -209,8 +209,14 @@ const Login = ({ navigation }: LoginProps) => {
                                 <Text className="text-sky-600">Sign Up</Text>
                             </TouchableOpacity>
                         </Animated.View>
+                        {/* Temp: kajo */}
                         {/* <TouchableOpacity
-                            onPress={() => navigation.push("HomeTabs")}
+                            onPress={() =>
+                                navigation.push("HomeTabs", {
+                                    username: "ggfdgd",
+                                    role: "user",
+                                })
+                            }
                         >
                             <Text>Home</Text>
                         </TouchableOpacity> */}
