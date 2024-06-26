@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
             <Image
                 source={contactIMG}
                 style={{
-                    width: 300,
+                    width: 400,
                     height: 300,
                     marginBottom: 0,
                     marginTop: -100,
