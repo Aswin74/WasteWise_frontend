@@ -95,18 +95,19 @@ const TabNavigator: React.FC<HomeTabProps> = ({ route }) => {
                     }}
                 />
             )}
-
-            <Tab.Screen
-                name="UserProfile"
-                component={UserProfile}
-                initialParams={{ username, role }}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="person" color={color} />
-                    ),
-                    title: "Profile",
-                }}
-            />
+            {role === "user" && (
+                <Tab.Screen
+                    name="UserProfile"
+                    component={UserProfile}
+                    initialParams={{ username, role }}
+                    options={{
+                        tabBarIcon: ({ color }) => (
+                            <TabBarIcon name="person" color={color} />
+                        ),
+                        title: "Profile",
+                    }}
+                />
+            )}
         </Tab.Navigator>
     )
 }

@@ -1,13 +1,12 @@
 import React from "react"
-import {
-    View,
-    Text,
-    StyleSheet,
-    ScrollView,
-    TouchableOpacity,
-} from "react-native"
+import { View, Text, StyleSheet } from "react-native"
+import AppBtn from "../../components/AppBtn"
 
 const Analysis = () => {
+    const handleBinlist = () => {
+        // Add implementation for this function
+    }
+    const handleStafflist = () => {}
     return (
         <View style={styles.container}>
             {/* Histogram placeholder */}
@@ -23,18 +22,11 @@ const Analysis = () => {
                 </Text>
             </View>
 
-            {/* Horizontal Scroll for buttons */}
-            <ScrollView
-                horizontal
-                contentContainerStyle={styles.buttonContainer}
-            >
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Staff list</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Bin list</Text>
-                </TouchableOpacity>
-            </ScrollView>
+            {/* Buttons */}
+            <View className="mb-2">
+                <AppBtn text="Bin list" onPress={handleBinlist} />
+            </View>
+            <AppBtn text="Staff list" onPress={handleStafflist} />
         </View>
     )
 }
@@ -49,7 +41,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        height: 300, // Adjust the height as needed
+        height: 500, // Adjust the height as needed
         backgroundColor: "#e0e0e0", // Placeholder color
     },
     detailsTab: {
@@ -69,17 +61,24 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         flexDirection: "row",
-        marginTop: 50,
+        justifyContent: "space-between",
+        alignItems: "center",
+        marginTop: 150,
+        marginEnd: 100,
+        paddingHorizontal: 20, // Reduced padding to make buttons closer
     },
     button: {
         padding: 10,
         backgroundColor: "#007bff",
-        borderRadius: 5,
-        marginRight: 20,
+        borderRadius: 10, // Increased border radius for a more rounded look
+        width: 120, // Increased width to make buttons more prominent
+        elevation: 5, // Added elevation for a more 3D look
     },
     buttonText: {
         color: "#fff",
         fontSize: 16,
+        textAlign: "center", // Center the button text
+        fontWeight: "bold", // Made text bold for a more prominent look
     },
 })
 
