@@ -11,6 +11,7 @@ import AdminDrawer from "./AdminDrawer"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { RootStackParamList } from "./Router"
 import BinAdd from "../screens/Admin/BinAdd"
+import ResponseView from "../screens/Admin/Response"
 
 type HomeTabProps = NativeStackScreenProps<RootStackParamList, "HomeTabs">
 const Tab = createBottomTabNavigator()
@@ -65,23 +66,44 @@ const TabNavigator: React.FC<HomeTabProps> = ({ route }) => {
                 component={Chatbot}
                 options={{
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="chatbubble" color={color} />
+                        <TabBarIcon name="chatbubbles" color={color} />
                     ),
                     title: "Chatbot",
                 }}
             />
 
-            <Tab.Screen
-                name="About Us"
-                component={DrawerNavigation}
-                options={{
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="information-circle" color={color} />
-                    ),
-                    title: "Contact us",
-                    headerShown: false,
-                }}
-            />
+            {role !== "admin" && (
+                <Tab.Screen
+                    name="About Us"
+                    component={DrawerNavigation}
+                    options={{
+                        tabBarIcon: ({ color }) => (
+                            <TabBarIcon
+                                name="information-circle"
+                                color={color}
+                            />
+                        ),
+                        title: "Contact us",
+                        headerShown: false,
+                    }}
+                />
+            )}
+
+            {role === "admin" && (
+                <Tab.Screen
+                    name="Responses"
+                    component={ResponseView}
+                    options={{
+                        headerShown: false,
+                        tabBarIcon: ({ color }) => (
+                            <TabBarIcon name="chatbox-ellipses" color={color} />
+                        ),
+
+                        title: "Responses",
+                    }}
+                />
+            )}
+
             {role === "admin" && (
                 <Tab.Screen
                     name="Admin"
@@ -95,6 +117,7 @@ const TabNavigator: React.FC<HomeTabProps> = ({ route }) => {
                     }}
                 />
             )}
+
             {role === "user" && (
                 <Tab.Screen
                     name="UserProfile"

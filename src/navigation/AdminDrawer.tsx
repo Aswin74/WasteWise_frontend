@@ -80,7 +80,7 @@ const AdminDrawer = () => {
                             activeTintColor="#5ce1e6"
                             inactiveTintColor="#f0efeb"
                         />
-                        <DrawerItem
+                        {/* <DrawerItem
                             label={"Response"}
                             onPress={() => {
                                 props.navigation.navigate("Response")
@@ -90,7 +90,7 @@ const AdminDrawer = () => {
                             // inactiveBackgroundColor="red"
                             activeTintColor="#5ce1e6"
                             inactiveTintColor="#f0efeb"
-                        />
+                        /> */}
                     </DrawerContentScrollView>
                 )
             }}
