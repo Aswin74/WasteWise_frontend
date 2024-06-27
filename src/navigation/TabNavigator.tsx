@@ -82,17 +82,19 @@ const TabNavigator: React.FC<HomeTabProps> = ({ route }) => {
                     headerShown: false,
                 }}
             />
-            <Tab.Screen
-                name="Admin"
-                component={AdminDrawer}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="person" color={color} />
-                    ),
-                    title: "Admin",
-                }}
-            />
+            {role === "admin" && (
+                <Tab.Screen
+                    name="Admin"
+                    component={AdminDrawer}
+                    options={{
+                        headerShown: false,
+                        tabBarIcon: ({ color }) => (
+                            <TabBarIcon name="person" color={color} />
+                        ),
+                        title: "Admin",
+                    }}
+                />
+            )}
 
             <Tab.Screen
                 name="UserProfile"

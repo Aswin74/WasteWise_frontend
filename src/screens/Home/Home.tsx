@@ -48,7 +48,7 @@ const Home: React.FC = () => {
         text = errorMsg
     } else if (location) {
         text = JSON.stringify(location)
-        console.log(location)
+        // console.log(location)
     }
 
     const [loc] = useState({
@@ -102,16 +102,16 @@ const Home: React.FC = () => {
     }
 
     useEffect(() => {
-        // const intervalId = setInterval(() => {
-        //     getBinData()
-        // }, 30 * 1000)
+        const intervalId = setInterval(() => {
+            getBinData()
+        }, 5 * 1000)
 
-        // return () => {
-        //     clearInterval(intervalId)
-        // }
+        return () => {
+            clearInterval(intervalId)
+        }
 
-        getBinData()
-    }, [])
+        // getBinData()
+    }, [binData])
 
     return (
         <View style={{ flex: 1 }}>
@@ -149,8 +149,8 @@ const Home: React.FC = () => {
                         <Marker
                             key={binda.bin_id}
                             coordinate={{
-                                latitude: 8.564345,
-                                longitude: 76.8880782,
+                                latitude: binda.latitude,
+                                longitude: binda.longitude,
                             }}
                             pinColor="blue"
                         >
