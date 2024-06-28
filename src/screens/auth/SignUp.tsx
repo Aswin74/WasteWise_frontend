@@ -89,7 +89,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
         }
 
         // Sending Mail
-        // sendEmail(emailData)
+        sendEmail(emailData)
 
         navigation.navigate("EmailVerification", {
             username,
