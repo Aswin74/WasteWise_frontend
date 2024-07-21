@@ -21,13 +21,19 @@
       "adaptiveIcon": {
         "foregroundImage": "src/assets/logo/ww_logo.png",
         "backgroundColor": "#323650"
-      }
+      },
+      "package": "com.aswin_jp.WasteWise"
     },
     "web": {
       "favicon": "src/assets/ww_logo_sm.png"
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "80d49821-e33a-4b75-bfa4-7f0c679e33d9"
+      }
+    }
   }
 }
