@@ -6,7 +6,8 @@
 * Map View : https://docs.expo.dev/versions/latest/sdk/map-view/ | https://github.com/react-native-maps/react-native-maps/blob/HEAD/docs/marker.md
 * WebView : npm install react-native-webview
 * React Native Vector Icons: npm install react-native-vector-icons //Inbuilt
-* React-native-dotenv : https://www.npmjs.com/package/react-native-dotenv
+* X uninstalled X React-native-dotenv : https://www.npmjs.com/package/react-native-dotenv
 * React native map directions : https://github.com/bramus/react-native-maps-directions
 * Drawer navigation:
 * Gesture handler:
+* Netinfo : https://github.com/react-native-netinfo/react-native-netinfo
