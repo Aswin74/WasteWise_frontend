@@ -1,6 +1,6 @@
 {
     "build": {
-      "EngeniusDemo": {
+      "Test-1": {
         "android": {
           "buildType": "apk"
         }

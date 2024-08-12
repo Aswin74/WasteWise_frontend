@@ -18,11 +18,12 @@
       "supportsTablet": true
     },
     "android": {
+      "permissions": ["INTERNET","ACCESS_FINE_LOCATION"],
       "adaptiveIcon": {
         "foregroundImage": "src/assets/logo/ww_logo.png",
         "backgroundColor": "#323650"
       },
-      "package": "com.aswin_jp.WasteWise"
+      "package": "com.test.WasteWise"
     },
     "web": {
       "favicon": "src/assets/ww_logo_sm.png"
