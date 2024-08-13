@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator()
 const AdminDrawer = () => {
     return (
         <Drawer.Navigator
-            initialRouteName="BinAdd"
+            initialRouteName="Analysis"
             screenOptions={{
                 drawerStyle: {
                     backgroundColor: "#323650",
@@ -36,39 +36,7 @@ const AdminDrawer = () => {
                         <Text className="text-ww-logo mx-auto mt-12 mb-5">
                             WasteWise
                         </Text>
-                        <DrawerItem
-                            label={"Bin Add"}
-                            onPress={() => {
-                                props.navigation.navigate("BinAdd")
-                            }}
-                            focused={focusedRoute === "BinAdd"}
-                            activeBackgroundColor="#6b7280"
-                            // inactiveBackgroundColor="red"
-                            activeTintColor="#5ce1e6"
-                            inactiveTintColor="#f0efeb"
-                        />
-                        <DrawerItem
-                            label={"StaffAdd"}
-                            onPress={() => {
-                                props.navigation.navigate("StaffAdd")
-                            }}
-                            focused={focusedRoute === "StaffAdd"}
-                            activeBackgroundColor="#6b7280"
-                            // inactiveBackgroundColor="red"
-                            activeTintColor="#5ce1e6"
-                            inactiveTintColor="#f0efeb"
-                        />
-                        <DrawerItem
-                            label={"AdminAdd"}
-                            onPress={() => {
-                                props.navigation.navigate("AdminAdd")
-                            }}
-                            focused={focusedRoute === "AdminAdd"}
-                            activeBackgroundColor="#6b7280"
-                            // inactiveBackgroundColor="red"
-                            activeTintColor="#5ce1e6"
-                            inactiveTintColor="#f0efeb"
-                        />
+
                         <DrawerItem
                             label={"Analysis"}
                             onPress={() => {
@@ -80,6 +48,40 @@ const AdminDrawer = () => {
                             activeTintColor="#5ce1e6"
                             inactiveTintColor="#f0efeb"
                         />
+                        <DrawerItem
+                            label={"Add bin"}
+                            onPress={() => {
+                                props.navigation.navigate("BinAdd")
+                            }}
+                            focused={focusedRoute === "BinAdd"}
+                            activeBackgroundColor="#6b7280"
+                            // inactiveBackgroundColor="red"
+                            activeTintColor="#5ce1e6"
+                            inactiveTintColor="#f0efeb"
+                        />
+                        <DrawerItem
+                            label={"Add staff"}
+                            onPress={() => {
+                                props.navigation.navigate("StaffAdd")
+                            }}
+                            focused={focusedRoute === "StaffAdd"}
+                            activeBackgroundColor="#6b7280"
+                            // inactiveBackgroundColor="red"
+                            activeTintColor="#5ce1e6"
+                            inactiveTintColor="#f0efeb"
+                        />
+                        <DrawerItem
+                            label={"Add admin"}
+                            onPress={() => {
+                                props.navigation.navigate("AdminAdd")
+                            }}
+                            focused={focusedRoute === "AdminAdd"}
+                            activeBackgroundColor="#6b7280"
+                            // inactiveBackgroundColor="red"
+                            activeTintColor="#5ce1e6"
+                            inactiveTintColor="#f0efeb"
+                        />
+
                         {/* <DrawerItem
                             label={"Response"}
                             onPress={() => {
