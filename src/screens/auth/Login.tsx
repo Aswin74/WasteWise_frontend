@@ -12,6 +12,7 @@ import {
   Platform,
   ScrollView,
   GestureResponderEvent,
+  ActivityIndicator,
 } from "react-native"
 import Animated, {
   FadeIn,
@@ -42,6 +43,7 @@ const Login = ({ navigation }: LoginProps) => {
   const [username, setUserName] = useState<string>("")
   const [password, setPassword] = useState<string>("")
 
+  const [loading, setLoading] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
   // const [inputValues, setInputValues] = useState<LoginInput>({
@@ -50,8 +52,9 @@ const Login = ({ navigation }: LoginProps) => {
   // })
 
   const handleSubmit = async (e: GestureResponderEvent) => {
-    e.preventDefault()
+    // e.preventDefault()
     // setInputValues({ username: username, password: password })
+    setLoading(true)
     setUserName(username)
     setPassword(password)
 
@@ -82,6 +85,7 @@ const Login = ({ navigation }: LoginProps) => {
       console.log("Failed", e)
       setHasError(true)
       setError(String(e))
+      setLoading(false)
     }
   }
 
@@ -186,7 +190,24 @@ const Login = ({ navigation }: LoginProps) => {
               entering={FadeInDown.delay(400).duration(1000).springify()}
               className="w-full"
             >
-              <AppBtn text="Login" onPress={handleSubmit} />
+              {/* {loading ? (
+                <ActivityIndicator />
+              ) : (
+                <AppBtn text="Login" onPress={handleSubmit} />
+              )} */}
+
+              <TouchableOpacity
+                className="bg-ww-primary w-full rounded-2xl p-3"
+                onPress={handleSubmit}
+              >
+                {loading ? (
+                  <ActivityIndicator />
+                ) : (
+                  <Text className="text-ww-white text-xl font-semibold text-center">
+                    Login
+                  </Text>
+                )}
+              </TouchableOpacity>
             </Animated.View>
 
             <Animated.View
@@ -194,7 +215,7 @@ const Login = ({ navigation }: LoginProps) => {
               className="flex-row justify-center"
             >
               <Text className="text-ww-black">Don't have an account? </Text>
-              <TouchableOpacity onPress={() => navigation.push("SignUp")}>
+              <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
                 <Text className="text-sky-600">Sign Up</Text>
               </TouchableOpacity>
             </Animated.View>

@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   GestureResponderEvent,
   TouchableOpacity,
+  ActivityIndicator,
 } from "react-native"
 // Navigation
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
@@ -33,11 +34,14 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
     password: "",
   })
 
+  const [loading, setLoading] = useState<boolean>(false)
   const [hasError, setHasError] = useState<boolean>(false)
   const [error, setError] = useState<string>("")
 
   const handleClick = (e: GestureResponderEvent) => {
-    e.preventDefault()
+    // e.preventDefault()
+    setLoading(true)
+
     if (verificationCode === inputCode) {
       // setSignupData({
       //     username: username,
@@ -56,7 +60,9 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
       console.log(data, "signupp")
       console.log("Verification Code Matches")
     } else {
-      console.log("Invalid verification code")
+      setError("Invalid verification code")
+      setHasError(true)
+      setLoading(false)
     }
   }
 
@@ -70,8 +76,10 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
       })
       console.log("Signup successful", response.data)
       navigation.navigate("Login")
-    } catch (error) {
-      console.log("Signup failed: ", error)
+    } catch (e) {
+      setError(String(e))
+      setHasError(true)
+      setLoading(false)
     }
   }
 
@@ -94,7 +102,11 @@ const Email: React.FC<EmailProps> = ({ route, navigation }) => {
           onPress={handleClick}
           className="bg-ww-primary p-2 rounded-lg"
         >
-          <Text className="text-ww-white text-center">Submit</Text>
+          {loading ? (
+            <ActivityIndicator />
+          ) : (
+            <Text className="text-ww-white text-center">Submit</Text>
+          )}
         </TouchableOpacity>
       </View>
       {hasError && (
