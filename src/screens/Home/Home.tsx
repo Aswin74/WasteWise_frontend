@@ -97,7 +97,7 @@ const Home: React.FC = () => {
         try {
             const response = await axios.get(`${awsURL}/getdata/`)
             setBinData(response.data)
-            // console.log("Successfull Bin", response.data, "&&", binData)
+            console.log("Successfull Bin", response.data, "&&", binData)
         } catch (error) {
             console.log("BinFetching Failed", error)
         }

@@ -4,12 +4,13 @@ import {
     createDrawerNavigator,
 } from "@react-navigation/drawer"
 
-import { Text } from "react-native"
+import { Image, Text } from "react-native"
 import BinAdd from "../screens/Admin/BinAdd"
 import StaffAdd from "../screens/Admin/StaffAdd"
 import AdminAdd from "../screens/Admin/AdminAdd"
 import Analysis from "../screens/Admin/Analysis"
 import Response from "../screens/Admin/Response"
+import { ww, ww_logo } from "../assets"
 
 const Drawer = createDrawerNavigator()
 
@@ -33,9 +34,11 @@ const AdminDrawer = () => {
                 return (
                     // Drawer Content
                     <DrawerContentScrollView {...props}>
-                        <Text className="text-ww-logo mx-auto mt-12 mb-5">
+                        {/* <Text className="text-ww-logo mx-auto mt-12 mb-5">
                             WasteWise
-                        </Text>
+                        </Text> */}
+
+                        <Image className="h-36 w-40 mx-auto" source={ww} />
 
                         <DrawerItem
                             label={"Analysis"}

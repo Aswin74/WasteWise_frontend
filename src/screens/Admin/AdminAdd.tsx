@@ -25,25 +25,25 @@ const AdminAdd = () => {
                     placeholder="First Name"
                     value={firstName}
                     onChangeText={setFirstName}
-                    className="border p-2 mb-4 rounded"
+                    className="border border-[#ccc] bg-white p-2 mb-4 rounded-xl"
                 />
 
                 <TextInput
                     placeholder="Email"
                     value={email}
                     onChangeText={setEmail}
-                    className="border p-2 mb-4 rounded"
+                    className="border border-[#ccc] bg-white p-2 mb-4 rounded-xl"
                     keyboardType="email-address"
                 />
                 <TextInput
                     placeholder="Password"
                     value={password}
                     onChangeText={setPassword}
-                    className="border p-2 mb-4 rounded"
+                    className="border border-[#ccc] bg-white p-2 mb-4 rounded-xl"
                     secureTextEntry
                 />
 
-                <AppBtn text="Add User" onPress={handleAdminAdd} />
+                <AppBtn text="Add Admin" onPress={handleAdminAdd} />
             </View>
         </View>
     )

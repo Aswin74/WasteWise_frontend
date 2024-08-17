@@ -94,8 +94,10 @@ const Analysis = () => {
                 <Text className="text-ww-black text-md font-semibold">
                     Busiest Day:{" "}
                     {
-                        chartData.reduce((max, current) =>
-                            max.value > current.value ? max : current
+                        chartData.reduce(
+                            (max, current) =>
+                                max.value > current.value ? max : current,
+                            { value: 0, label: "none" }
                         ).label
                     }
                 </Text>
